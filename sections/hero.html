@@ -1,0 +1,66 @@
+<!-- ============================================================
+     hero.html — Landing / hero section
+     ✏️  TO UPDATE:
+       • Name → change "Valmeeki" / "Singh"
+       • Subtitle pill → edit .hero-tag text
+       • Description → edit .hero-desc paragraph
+       • Stat cards → edit .stat-num and .stat-label values
+       • CTA buttons → edit href targets and button labels
+       • Typing roles → edit the roles[] array in main.js
+     ============================================================ -->
+
+<section id="hero">
+  <!-- Animated background grid -->
+  <div class="hero-grid"></div>
+  <!-- Green glow blob -->
+  <div class="hero-glow"></div>
+
+  <!-- Main content (left side) -->
+  <div class="hero-content">
+
+    <!-- Small pill tag above name -->
+    <div class="hero-tag">Final Year B.Tech — Cloud Computing</div>
+
+    <!-- Name heading -->
+    <h1 class="hero-name">
+      Valmeeki<br>
+      <span class="accent">Singh</span>
+    </h1>
+
+    <!-- Typing role — text is swapped by JS in main.js -->
+    <p class="hero-role">Software Developer &amp; Cloud Engineer<span class="blink"></span></p>
+
+    <!-- Short bio description -->
+    <p class="hero-desc">
+      Building <span>intelligent, scalable applications</span> at the intersection
+      of cloud infrastructure and modern web tech.
+      Full-stack developer with Azure &amp; OCI expertise, currently seeking
+      entry-level roles in Bengaluru.
+    </p>
+
+    <!-- CTA buttons -->
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary">./view_projects</a>
+      <a href="#contact"  class="btn btn-ghost">get_in_touch()</a>
+    </div>
+
+  </div><!-- /hero-content -->
+
+  <!-- Floating stat cards (right side, hidden on mobile) -->
+  <div class="hero-stats">
+    <!-- ✏️  Update these numbers whenever they change -->
+    <div class="stat-card">
+      <div class="stat-num">8.3</div>
+      <div class="stat-label">CGPA</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">4+</div>
+      <div class="stat-label">Certifications</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">2026</div>
+      <div class="stat-label">Graduating</div>
+    </div>
+  </div>
+
+</section>

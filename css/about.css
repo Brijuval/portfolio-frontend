@@ -1,0 +1,52 @@
+/* ============================================================
+   about.css — About me section styles
+   ✏️  EDIT: grid layout, terminal window, bio text, social links
+   ============================================================ */
+
+#about {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Two-column layout: terminal on left, bio on right */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* Bio paragraphs */
+.about-text p {
+  font-size: 0.88rem;
+  line-height: 1.9;
+  color: var(--text);
+  margin-bottom: 1.2rem;
+}
+.about-text p span { color: var(--green); font-weight: 500; }
+
+/* Social links row (GitHub, LinkedIn, etc.) */
+.about-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.about-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.8rem;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+.about-link:hover { color: var(--green); border-color: var(--green); }
+
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+}

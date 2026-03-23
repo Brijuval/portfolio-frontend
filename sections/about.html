@@ -1,0 +1,86 @@
+<!-- ============================================================
+     about.html — About me section
+     ✏️  TO UPDATE:
+       • Terminal JSON block → edit values inside the .t-out lines
+       • Bio paragraphs → edit the 3 <p> tags in .about-text
+       • Social links → update href values in .about-links
+     ============================================================ -->
+
+<section id="about">
+  <div class="section-header fade-up">
+    <div class="section-tag">about_me</div>
+    <h2 class="section-title">Who I Am <span class="dim">// the full picture</span></h2>
+  </div>
+
+  <div class="about-grid">
+
+    <!-- ══ LEFT — Terminal window showing profile.json ══ -->
+    <div class="terminal-window fade-up">
+      <div class="terminal-bar">
+        <div class="t-dot red"></div>
+        <div class="t-dot amber"></div>
+        <div class="t-dot green"></div>
+        <div class="terminal-title">valmeeki@portfolio ~ profile.json</div>
+      </div>
+      <div class="terminal-body">
+        <div class="t-line">
+          <span class="t-prompt">$</span>
+          <span class="t-cmd">cat profile.json</span>
+        </div>
+        <br>
+        <div class="t-out">{</div>
+        <!-- ✏️  Update each value below -->
+        <div class="t-out">&nbsp;&nbsp;<span class="t-key">"name"</span>: <span class="t-val">"Valmeeki Singh"</span>,</div>
+        <div class="t-out">&nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-val">"Software Developer"</span>,</div>
+        <div class="t-out">&nbsp;&nbsp;<span class="t-key">"location"</span>: <span class="t-val">"Bengaluru, IN"</span>,</div>
+        <div class="t-out">&nbsp;&nbsp;<span class="t-key">"cgpa"</span>: <span class="t-val">8.3</span>,</div>
+        <div class="t-out">&nbsp;&nbsp;<span class="t-key">"specialization"</span>: <span class="t-val">"Cloud Computing"</span>,</div>
+        <div class="t-out">&nbsp;&nbsp;<span class="t-key">"cloud"</span>: [<span class="t-val">"Azure"</span>, <span class="t-val">"OCI"</span>],</div>
+        <div class="t-out">&nbsp;&nbsp;<span class="t-key">"languages"</span>: [<span class="t-val">"Python"</span>, <span class="t-val">"C++"</span>, <span class="t-val">"MySQL"</span>],</div>
+        <div class="t-out">&nbsp;&nbsp;<span class="t-key">"status"</span>: <span style="color:var(--green)">"open_to_work"</span></div>
+        <div class="t-out">}</div>
+        <br>
+        <div class="t-line">
+          <span class="t-prompt">$</span>
+          <span class="t-comment"> # B.Tech IT — Alliance University 2026</span>
+        </div>
+      </div>
+    </div><!-- /terminal-window -->
+
+    <!-- ══ RIGHT — Bio text ══ -->
+    <div class="about-text fade-up">
+
+      <!-- ✏️  Edit these 3 paragraphs freely -->
+      <p>
+        I'm a <span>final-year B.Tech student</span> specialising in Cloud Computing
+        at Alliance University, Bengaluru, graduating in July 2026. I build intelligent,
+        deployment-ready applications — from AI-powered web apps to cloud dashboards.
+      </p>
+
+      <p>
+        My most recent project, <span>TweetForge AI</span>, is a live React + Groq API
+        application that generates on-brand tweets using LLaMA 3.3 70B. I've also
+        published an academic paper at <span>ICICC-2025</span>, an international
+        conference held at the University of Delhi in collaboration with NIT Patna and
+        University of Valladolid, Spain.
+      </p>
+
+      <p>
+        I hold certifications in <span>OCI DevOps, Azure, Google Cloud Data Engineering</span>,
+        and more. I'm actively seeking entry-level Software Developer roles where I can
+        contribute to scalable, cloud-native systems.
+      </p>
+
+      <!-- Social / profile links -->
+      <div class="about-links">
+        <!-- ✏️  Update each href to your actual profile URLs -->
+        <a href="https://github.com/Brijuval"             class="about-link" target="_blank">⌥ GitHub</a>
+        <a href="https://linkedin.com/in/valmeeki"        class="about-link" target="_blank">⌥ LinkedIn</a>
+        <a href="https://leetcode.com"                    class="about-link" target="_blank">⌥ LeetCode</a>
+        <a href="mailto:valmikisingh2001@gmail.com"       class="about-link">⌥ Email</a>
+      </div>
+
+    </div><!-- /about-text -->
+
+  </div><!-- /about-grid -->
+</section>

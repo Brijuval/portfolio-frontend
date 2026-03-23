@@ -1,0 +1,71 @@
+/* ============================================================
+   blog.css — Blog / Writing section styles
+   ✏️  EDIT: card layout, badge colours, excerpt text
+   ============================================================ */
+
+/* Auto-fill grid */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.blog-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 1.8rem;
+  transition: all 0.3s;
+  position: relative;
+  cursor: none;
+}
+.blog-card:hover {
+  border-color: rgba(0,212,255,0.3);
+  transform: translateY(-2px);
+}
+
+/* "Cloud · Feb 2025" meta row */
+.blog-meta {
+  font-size: 0.65rem;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+  display: flex;
+  gap: 1rem;
+}
+.blog-tag-label { color: var(--cyan); }   /* ✏️  change var(--cyan) to another color per category */
+
+.blog-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.blog-excerpt {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.blog-read-more {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.72rem;
+  color: var(--cyan);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+.blog-read-more:hover { text-decoration: underline; }
+
+/* "LIVE" / "COMING SOON" badge — top right of card */
+.blog-coming-soon {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  font-size: 0.6rem;
+  background: rgba(0,212,255,0.1);
+  color: var(--cyan);
+  border: 1px solid rgba(0,212,255,0.2);
+  padding: 0.15rem 0.5rem;
+  letter-spacing: 0.1em;
+}

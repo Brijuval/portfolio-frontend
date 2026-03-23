@@ -1,0 +1,166 @@
+<!-- ============================================================
+     design.html — Creative Work / Design gallery section
+     ✏️  TO ADD YOUR REAL IMAGES:
+       1. Create a folder called "images/" next to index.html
+       2. Put your screenshots inside it (e.g. design-1.jpg)
+       3. In each card, replace the .design-thumb-placeholder block with:
+          <img src="images/your-file.jpg" alt="Design name">
+       4. Update the onclick path, card title, description, tools
+
+     ✏️  TO ADD A NEW CARD:
+       • Copy any .design-card block
+       • Change data-cat to: uiux | photo | poster | web
+       • Update badge class: badge-uiux | badge-photo | badge-poster | badge-web
+       • Update placeholder class: ph-uiux | ph-photo | ph-poster | ph-web
+     ============================================================ -->
+
+<section id="design">
+  <div class="section-header fade-up">
+    <div class="section-tag">design_work</div>
+    <h2 class="section-title">Creative Work <span class="dim">// ui · photoshop · posters · web</span></h2>
+  </div>
+
+  <!-- Filter buttons — clicking these shows/hides cards by category -->
+  <div class="design-filter-bar fade-up">
+    <button class="filter-btn active" onclick="filterDesign('all', this)">all_work()</button>
+    <button class="filter-btn" onclick="filterDesign('uiux',   this)">ui_ux</button>
+    <button class="filter-btn" onclick="filterDesign('photo',  this)">photoshop</button>
+    <button class="filter-btn" onclick="filterDesign('poster', this)">posters</button>
+    <button class="filter-btn" onclick="filterDesign('web',    this)">web_design</button>
+  </div>
+
+  <div class="design-grid" id="designGrid">
+
+    <!-- ── CARD 1 — UI/UX ── -->
+    <div class="design-card" data-cat="uiux"
+         onclick="openLightbox('images/design-1.jpg', 'Mobile App UI — Onboarding Flow')">
+      <div class="design-badge badge-uiux">UI/UX</div>
+      <div class="design-thumb ph-uiux">
+        <!-- ✏️  Replace this block with <img src="images/design-1.jpg" alt="..."> -->
+        <div class="design-thumb-placeholder">
+          <span class="ph-icon">🖥️</span>
+          <span>your_image_here.jpg</span>
+        </div>
+      </div>
+      <div class="design-overlay">
+        <div class="design-card-cat">UI / UX Design</div>
+        <div class="design-card-title">Mobile App Onboarding Flow</div>
+        <div class="design-card-desc">User onboarding screens with wireframes and hi-fi mockups.</div>
+        <div class="design-card-tools">
+          <span class="tag">Figma</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CARD 2 — Photoshop ── -->
+    <div class="design-card" data-cat="photo"
+         onclick="openLightbox('images/design-2.jpg', 'Photoshop Compositing Work')">
+      <div class="design-badge badge-photo">Photoshop</div>
+      <div class="design-thumb ph-photo">
+        <div class="design-thumb-placeholder">
+          <span class="ph-icon">🎨</span>
+          <span>your_image_here.jpg</span>
+        </div>
+      </div>
+      <div class="design-overlay">
+        <div class="design-card-cat">Photoshop</div>
+        <div class="design-card-title">Photo Compositing &amp; Editing</div>
+        <div class="design-card-desc">Advanced compositing and retouching work in Adobe Photoshop.</div>
+        <div class="design-card-tools">
+          <span class="tag">Photoshop</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CARD 3 — Poster ── -->
+    <div class="design-card" data-cat="poster"
+         onclick="openLightbox('images/design-3.jpg', 'Event Poster Design')">
+      <div class="design-badge badge-poster">Poster</div>
+      <div class="design-thumb ph-poster">
+        <div class="design-thumb-placeholder">
+          <span class="ph-icon">🗞️</span>
+          <span>your_image_here.jpg</span>
+        </div>
+      </div>
+      <div class="design-overlay">
+        <div class="design-card-cat">Poster / Social Media</div>
+        <div class="design-card-title">Event Poster Design</div>
+        <div class="design-card-desc">Creative event poster with bold typography and visual hierarchy.</div>
+        <div class="design-card-tools">
+          <span class="tag">Photoshop</span>
+          <span class="tag">Illustrator</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CARD 4 — Web Design ── -->
+    <div class="design-card" data-cat="web"
+         onclick="openLightbox('images/design-4.jpg', 'Web UI Mockup')">
+      <div class="design-badge badge-web">Web Design</div>
+      <div class="design-thumb ph-web">
+        <div class="design-thumb-placeholder">
+          <span class="ph-icon">🌐</span>
+          <span>your_image_here.jpg</span>
+        </div>
+      </div>
+      <div class="design-overlay">
+        <div class="design-card-cat">Web Design</div>
+        <div class="design-card-title">Web UI Mockup</div>
+        <div class="design-card-desc">Desktop web mockup — layout, colour palette, and component design.</div>
+        <div class="design-card-tools">
+          <span class="tag">Figma</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CARD 5 — UI/UX ── -->
+    <div class="design-card" data-cat="uiux"
+         onclick="openLightbox('images/design-5.jpg', 'Wireframe Set')">
+      <div class="design-badge badge-uiux">UI/UX</div>
+      <div class="design-thumb ph-uiux">
+        <div class="design-thumb-placeholder">
+          <span class="ph-icon">📐</span>
+          <span>your_image_here.jpg</span>
+        </div>
+      </div>
+      <div class="design-overlay">
+        <div class="design-card-cat">UI / UX Design</div>
+        <div class="design-card-title">Wireframe Set</div>
+        <div class="design-card-desc">Low-fidelity to high-fidelity wireframes for a web application.</div>
+        <div class="design-card-tools">
+          <span class="tag">Figma</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CARD 6 — Poster ── -->
+    <div class="design-card" data-cat="poster"
+         onclick="openLightbox('images/design-6.jpg', 'Social Media Creative')">
+      <div class="design-badge badge-poster">Poster</div>
+      <div class="design-thumb ph-poster">
+        <div class="design-thumb-placeholder">
+          <span class="ph-icon">📱</span>
+          <span>your_image_here.jpg</span>
+        </div>
+      </div>
+      <div class="design-overlay">
+        <div class="design-card-cat">Social Media Creative</div>
+        <div class="design-card-title">Social Media Post Series</div>
+        <div class="design-card-desc">Branded social media graphics with consistent visual language.</div>
+        <div class="design-card-tools">
+          <span class="tag">Photoshop</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /design-grid -->
+</section>
+
+<!-- Lightbox overlay — appears when you click a design card -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-inner" onclick="event.stopPropagation()">
+    <button class="lightbox-close" onclick="closeLightbox()">[ ESC ] close</button>
+    <img src="" alt="" class="lightbox-img" id="lightboxImg"/>
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+</div>

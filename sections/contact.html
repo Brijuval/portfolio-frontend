@@ -1,0 +1,94 @@
+<!-- ============================================================
+     contact.html — Contact section
+     ✏️  TO UPDATE:
+       • Edit email, phone, LinkedIn, GitHub in the left column
+       • The form submits to Django API → edit the fetch URL in main.js
+         (search for: fetch('http://127.0.0.1:8000/api/contact/')
+     ============================================================ -->
+
+<section id="contact">
+  <div class="section-header fade-up">
+    <div class="section-tag">contact</div>
+    <h2 class="section-title">Get In Touch <span class="dim">// let's connect</span></h2>
+  </div>
+
+  <div class="contact-layout">
+
+    <!-- ══ LEFT — Contact info ══ -->
+    <div class="fade-up">
+      <p>
+        Open to full-time Software Developer and Cloud Engineering roles in Bengaluru.
+        Actively going through campus placements — if you're hiring or want to
+        collaborate, reach out.
+      </p>
+
+      <!-- ✏️  Update each href and display text -->
+      <a href="mailto:valmikisingh2001@gmail.com" class="contact-item">
+        <div class="contact-item-icon">@</div>
+        valmikisingh2001@gmail.com
+      </a>
+
+      <a href="tel:7204635604" class="contact-item">
+        <div class="contact-item-icon">📞</div>
+        +91 7204635604
+      </a>
+
+      <a href="https://linkedin.com/in/valmeeki" class="contact-item" target="_blank">
+        <div class="contact-item-icon">in</div>
+        linkedin.com/in/valmeeki
+      </a>
+
+      <a href="https://github.com/Brijuval" class="contact-item" target="_blank">
+        <div class="contact-item-icon">⌥</div>
+        github.com/Brijuval
+      </a>
+    </div><!-- /left -->
+
+    <!-- ══ RIGHT — Contact form (terminal styled) ══ -->
+    <div class="fade-up">
+      <div class="terminal-window">
+        <div class="terminal-bar">
+          <div class="t-dot red"></div>
+          <div class="t-dot amber"></div>
+          <div class="t-dot green"></div>
+          <div class="terminal-title">send_message.sh</div>
+        </div>
+
+        <div style="padding:1.5rem">
+          <div class="contact-form" id="contactForm">
+
+            <div class="form-group">
+              <label class="form-label">name</label>
+              <input type="text"  class="form-input"    placeholder="your_name"          id="fname"/>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">email</label>
+              <input type="email" class="form-input"    placeholder="your@email.com"     id="femail"/>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">subject</label>
+              <input type="text"  class="form-input"    placeholder="reason_for_contact" id="fsubject"/>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">message</label>
+              <textarea class="form-textarea" placeholder="your message here..." id="fmessage"></textarea>
+            </div>
+
+            <!-- Submit button — calls handleSubmit() in main.js -->
+            <button class="form-submit" onclick="handleSubmit()">./send_message.sh</button>
+
+            <!-- Success message (hidden by default, shown after submit) -->
+            <div id="formMsg" style="font-size:0.75rem;color:var(--green);display:none;">
+              ✓ Message sent! I'll reply within 24hrs.
+            </div>
+
+          </div><!-- /contactForm -->
+        </div>
+      </div><!-- /terminal-window -->
+    </div><!-- /right -->
+
+  </div><!-- /contact-layout -->
+</section>

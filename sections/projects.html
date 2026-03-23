@@ -1,0 +1,99 @@
+<!-- ============================================================
+     projects.html — Projects showcase section
+     ✏️  TO ADD A NEW PROJECT:
+       1. Copy one entire <div class="project-card"> block
+       2. Paste it inside .projects-grid
+       3. Update: project-num, title, desc, tags, github/demo links
+       4. Add "FEATURED" badge only on your best project
+     ============================================================ -->
+
+<section id="projects">
+  <div class="section-header fade-up">
+    <div class="section-tag">projects</div>
+    <h2 class="section-title">What I've Built <span class="dim">// selected work</span></h2>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- ── PROJECT 1 ── TweetForge AI ── -->
+    <div class="project-card fade-up">
+      <div class="project-featured">FEATURED</div>         <!-- remove this line if not featured -->
+      <div class="project-num">01 / PROJECT</div>
+      <h3 class="project-title">TweetForge AI</h3>
+      <p class="project-desc">
+        AI-powered brand tweet generator using React, Groq API &amp; LLaMA 3.3 70B.
+        Supports 3 brand voice modes — Social Post Analysis, AI Inference, and Manual
+        Definition — generating 10 tweets across 6 styles with animated brand voice scoring.
+      </p>
+      <div class="project-tags">
+        <!-- ✏️  Add/remove tags to match your tech stack -->
+        <span class="tag">React 18</span>
+        <span class="tag">Vite</span>
+        <span class="tag">Groq API</span>
+        <span class="tag">LLaMA 3.3 70B</span>
+        <span class="tag">Vercel</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/Brijuval/Tweetforge-ai" class="project-link" target="_blank">→ GitHub</a>
+        <a href="#" class="project-link" target="_blank">→ Live Demo</a>
+      </div>
+    </div>
+
+    <!-- ── PROJECT 2 ── Sales Analytics Dashboard ── -->
+    <div class="project-card fade-up">
+      <div class="project-num">02 / PROJECT</div>
+      <h3 class="project-title">Real-Time Sales Analytics Dashboard</h3>
+      <p class="project-desc">
+        Interactive Business Intelligence dashboard built on Microsoft Azure + Power BI.
+        Analyzes accident trends by location, time, and severity. Uses DAX for computed
+        metrics and simplifies complex SQL data for non-technical stakeholders.
+      </p>
+      <div class="project-tags">
+        <span class="tag">Azure</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">SQL</span>
+        <span class="tag">DAX</span>
+      </div>
+      <div class="project-links">
+        <a href="#" class="project-link" target="_blank">→ GitHub</a>
+      </div>
+    </div>
+
+    <!-- ── PROJECT 3 ── Portfolio Website ── -->
+    <div class="project-card fade-up">
+      <div class="project-num">03 / PROJECT</div>
+      <h3 class="project-title">Portfolio Website</h3>
+      <p class="project-desc">
+        This very site — a dark, terminal-aesthetic developer portfolio built with
+        vanilla HTML/CSS/JS frontend and Django REST backend. Includes a working
+        contact form, project showcase, and blog system.
+      </p>
+      <div class="project-tags">
+        <span class="tag">HTML/CSS/JS</span>
+        <span class="tag">Django</span>
+        <span class="tag">REST API</span>
+        <span class="tag">Python</span>
+      </div>
+      <div class="project-links">
+        <a href="#" class="project-link">→ GitHub (soon)</a>
+      </div>
+    </div>
+
+    <!-- ── ADD NEW PROJECT HERE ──
+    <div class="project-card fade-up">
+      <div class="project-num">04 / PROJECT</div>
+      <h3 class="project-title">Your Project Name</h3>
+      <p class="project-desc">Short description of what it does and the problem it solves.</p>
+      <div class="project-tags">
+        <span class="tag">Tech 1</span>
+        <span class="tag">Tech 2</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/Brijuval/your-repo" class="project-link" target="_blank">→ GitHub</a>
+        <a href="#" class="project-link" target="_blank">→ Live Demo</a>
+      </div>
+    </div>
+    ── END NEW PROJECT ── -->
+
+  </div><!-- /projects-grid -->
+</section>

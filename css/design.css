@@ -1,0 +1,208 @@
+/* ============================================================
+   design.css — Creative Work gallery section styles
+   ✏️  EDIT: card sizes, placeholder colours, badge colours
+   ============================================================ */
+
+#design {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Filter buttons row ── */
+.design-filter-bar {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+.filter-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  cursor: none;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+.filter-btn:hover { color: var(--text); border-color: var(--muted); }
+.filter-btn.active {
+  background: var(--green);
+  color: #0a0c0f;
+  border-color: var(--green);
+  font-weight: 700;
+}
+
+/* ── Gallery grid ── */
+.design-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem;
+}
+
+/* ── Individual design card ── */
+.design-card {
+  position: relative;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  cursor: none;
+  transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+  aspect-ratio: 4/3;       /* ✏️  change ratio e.g. 16/9 for landscape */
+}
+.design-card.hidden { display: none; }
+.design-card:hover {
+  border-color: rgba(0,255,136,0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+}
+
+/* ── Thumbnail area ── */
+.design-thumb {
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+/* Actual image (when you add your screenshots) */
+.design-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.design-card:hover .design-thumb img { transform: scale(1.06); }
+
+/* ── Placeholder (shown before you add real images) ── */
+.design-thumb-placeholder {
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  transition: transform 0.5s ease;
+}
+.design-card:hover .design-thumb-placeholder { transform: scale(1.04); }
+.design-thumb-placeholder .ph-icon { font-size: 2rem; opacity: 0.4; }
+
+/* ── Placeholder background colours per category ── */
+/* ✏️  Change these gradients to match your work's mood */
+.ph-uiux   { background: linear-gradient(135deg, #0f1c2e 0%, #1a2d4a 50%, #0d1f35 100%); }
+.ph-photo  { background: linear-gradient(135deg, #1a0f2e 0%, #2d1a4a 50%, #1f0d35 100%); }
+.ph-poster { background: linear-gradient(135deg, #2e1a0f 0%, #4a2d1a 50%, #351f0d 100%); }
+.ph-web    { background: linear-gradient(135deg, #0f2e1a 0%, #1a4a2d 50%, #0d350f 100%); }
+
+/* ── Hover overlay (slides up with title + desc) ── */
+.design-overlay {
+  position: absolute; inset: 0;
+  background: rgba(10,12,15,0.88);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 1.4rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.design-card:hover .design-overlay { opacity: 1; }
+
+.design-card-cat {
+  font-size: 0.62rem;
+  color: var(--green);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.design-card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+.design-card-desc {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.design-card-tools {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: 0.7rem;
+}
+.design-card-tools .tag {
+  font-size: 0.6rem;
+  color: var(--cyan);
+  border-color: rgba(0,212,255,0.25);
+}
+
+/* ── Category badge (top-right corner of each card) ── */
+.design-badge {
+  position: absolute;
+  top: 0.7rem; right: 0.7rem;
+  font-size: 0.58rem;
+  padding: 0.15rem 0.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  z-index: 2;
+}
+/* ✏️  Badge colour per category */
+.badge-uiux   { background: rgba(0,212,255,0.15);  color: var(--cyan);  border: 1px solid rgba(0,212,255,0.3); }
+.badge-photo  { background: rgba(255,71,87,0.12);   color: var(--red);   border: 1px solid rgba(255,71,87,0.3); }
+.badge-poster { background: rgba(255,183,0,0.12);   color: var(--amber); border: 1px solid rgba(255,183,0,0.3); }
+.badge-web    { background: rgba(0,255,136,0.10);   color: var(--green); border: 1px solid rgba(0,255,136,0.25); }
+
+/* ── Lightbox overlay ── */
+.lightbox {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(5,7,10,0.95);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(12px);
+}
+.lightbox.open { display: flex; }
+
+.lightbox-inner {
+  max-width: 900px;
+  width: 90%;
+  position: relative;
+}
+.lightbox-img {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  display: block;
+}
+.lightbox-close {
+  position: absolute;
+  top: -2.5rem; right: 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+  cursor: none;
+  letter-spacing: 0.1em;
+  background: none;
+  border: none;
+  font-family: 'JetBrains Mono', monospace;
+  transition: color 0.2s;
+}
+.lightbox-close:hover { color: var(--green); }
+.lightbox-caption {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-align: center;
+}

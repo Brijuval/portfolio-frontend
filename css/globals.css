@@ -1,0 +1,174 @@
+/* ============================================================
+   globals.css — Design tokens & base styles
+   ✏️  EDIT HERE to change: colors, fonts, spacing site-wide
+   ============================================================ */
+
+/* ── Color Palette ── */
+:root {
+  --bg:      #0a0c0f;   /* main background */
+  --bg2:     #0f1217;   /* section alternate background */
+  --bg3:     #141820;   /* cards / nav background */
+  --border:  #1e2530;   /* all borders */
+
+  --green:   #00ff88;   /* primary accent (buttons, cursor, highlights) */
+  --green2:  #00cc6e;   /* hover state for green */
+  --cyan:    #00d4ff;   /* secondary accent (links, tags) */
+  --amber:   #ffb700;   /* certifications, skill category titles */
+  --red:     #ff4757;   /* Photoshop badge */
+
+  --text:    #c8d6e5;   /* body text */
+  --muted:   #4a5568;   /* placeholder / secondary text */
+  --white:   #eef2f7;   /* headings */
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
+  overflow-x: hidden;
+  cursor: none;               /* hidden because we use custom cursor */
+}
+*, *::before, *::after {
+  cursor: none !important;
+}
+
+/* ── Scanlines overlay (the subtle CRT line effect) ── */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent, transparent 2px,
+    rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* ── Scroll fade-up animation (used on every section) ── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Shared section layout ── */
+section { padding: 6rem 3rem; }
+
+.section-header { margin-bottom: 3.5rem; }
+
+/* "// about_me" small tag above every heading */
+.section-tag {
+  font-size: 0.7rem;
+  color: var(--green);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.section-tag::before { content: '// '; opacity: 0.5; }
+
+/* Section main heading */
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: var(--white);
+}
+.section-title .dim { color: var(--muted); font-weight: 400; }
+
+/* ── Shared button styles ── */
+.btn {
+  padding: 0.75rem 1.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.2s;
+  cursor: none;
+}
+.btn-primary {
+  background: var(--green);
+  color: #0a0c0f;
+  font-weight: 700;
+}
+.btn-primary:hover {
+  background: var(--green2);
+  box-shadow: 0 0 30px rgba(0,255,136,0.3);
+  transform: translateY(-1px);
+}
+.btn-ghost {
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.btn-ghost:hover {
+  border-color: var(--green);
+  color: var(--green);
+  transform: translateY(-1px);
+}
+
+/* ── Shared pill/tag used in project & design cards ── */
+.tag {
+  font-size: 0.65rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--border);
+  color: var(--cyan);
+  letter-spacing: 0.05em;
+  border-radius: 2px;
+}
+
+/* ── Terminal window component (used in About & Contact) ── */
+.terminal-window {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg3);
+  border-bottom: 1px solid var(--border);
+}
+.t-dot { width: 10px; height: 10px; border-radius: 50%; }
+.t-dot.red   { background: #ff5f57; }
+.t-dot.amber { background: #febc2e; }
+.t-dot.green { background: #28c840; }
+.terminal-title {
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin: 0 auto;
+}
+.terminal-body {
+  padding: 1.5rem;
+  font-size: 0.82rem;
+  line-height: 2;
+}
+.t-line    { display: flex; gap: 0.5rem; }
+.t-prompt  { color: var(--green); user-select: none; }
+.t-cmd     { color: var(--cyan); }
+.t-out     { color: var(--text); padding-left: 1.2rem; }
+.t-key     { color: var(--amber); }
+.t-val     { color: var(--text); }
+.t-comment { color: var(--muted); font-style: italic; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  section { padding: 4rem 1.5rem; }
+}

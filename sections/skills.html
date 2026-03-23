@@ -1,0 +1,177 @@
+<!-- ============================================================
+     skills.html — Skills + Certifications section
+     ✏️  TO UPDATE SKILLS:
+       • Change the width% on each .skill-bar (e.g. style="width:85%")
+         → 100% = expert, 70% = good, 50% = learning
+       • Add a new skill: copy a .skill-item block, update name + %
+       • Add a new category: copy a .skill-category block
+
+     ✏️  TO UPDATE CERTIFICATIONS:
+       • Edit .cert-name and .cert-issuer text
+       • Change the emoji icon in .cert-icon
+       • Add new cert: copy a .cert-item block
+     ============================================================ -->
+
+<section id="skills">
+  <div class="section-header fade-up">
+    <div class="section-tag">skills_and_certs</div>
+    <h2 class="section-title">Tech Stack <span class="dim">// tools I use</span></h2>
+  </div>
+
+  <div class="skills-layout">
+
+    <!-- ══ LEFT COLUMN — Skill bars ══ -->
+    <div class="fade-up">
+
+      <!-- Category: Languages -->
+      <div class="skill-category">
+        <div class="skill-cat-title">Languages</div>
+
+        <div class="skill-item">
+          <span class="skill-name">Python</span>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" style="width:85%"></div>   <!-- ✏️  change % -->
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <span class="skill-name">C++</span>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" style="width:75%"></div>
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <span class="skill-name">MySQL</span>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" style="width:80%"></div>
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <span class="skill-name">JavaScript</span>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" style="width:70%"></div>
+          </div>
+        </div>
+      </div><!-- /Languages -->
+
+      <!-- Category: Frameworks & Tools -->
+      <div class="skill-category">
+        <div class="skill-cat-title">Frameworks &amp; Tools</div>
+
+        <div class="skill-item">
+          <span class="skill-name">React</span>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:72%"></div></div>
+        </div>
+
+        <div class="skill-item">
+          <span class="skill-name">Django</span>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:68%"></div></div>
+        </div>
+
+        <div class="skill-item">
+          <span class="skill-name">Docker</span>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div>
+        </div>
+
+        <div class="skill-item">
+          <span class="skill-name">Git / GitHub</span>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div>
+        </div>
+
+        <!-- ── ADD NEW SKILL HERE ──
+        <div class="skill-item">
+          <span class="skill-name">Your Skill</span>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:60%"></div></div>
+        </div>
+        ── END ── -->
+      </div><!-- /Frameworks -->
+
+      <!-- Category: Cloud Platforms -->
+      <div class="skill-category">
+        <div class="skill-cat-title">Cloud Platforms</div>
+
+        <div class="skill-item">
+          <span class="skill-name">Microsoft Azure</span>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div>
+        </div>
+
+        <div class="skill-item">
+          <span class="skill-name">Oracle Cloud (OCI)</span>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:78%"></div></div>
+        </div>
+
+        <div class="skill-item">
+          <span class="skill-name">Google Cloud</span>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:60%"></div></div>
+        </div>
+      </div><!-- /Cloud -->
+
+    </div><!-- /left column -->
+
+    <!-- ══ RIGHT COLUMN — Certifications ══ -->
+    <div class="fade-up">
+      <div class="skill-cat-title" style="color:var(--amber);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;">
+        Certifications
+      </div>
+
+      <div class="cert-list">
+
+        <!-- ✏️  Each .cert-item = one certificate -->
+
+        <div class="cert-item">
+          <div class="cert-icon">☁️</div>
+          <div>
+            <div class="cert-name">OCI DevOps Professional</div>
+            <div class="cert-issuer">Oracle · Oct 2025</div>
+          </div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-icon">🔒</div>
+          <div>
+            <div class="cert-name">Data, Security and Privacy</div>
+            <div class="cert-issuer">Coursera · Mar 2025</div>
+          </div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-icon">📊</div>
+          <div>
+            <div class="cert-name">Google Cloud: Cloud Data Engineer</div>
+            <div class="cert-issuer">Coursera · Apr 2024</div>
+          </div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-icon">🎨</div>
+          <div>
+            <div class="cert-name">Web Design: Wireframes to Prototypes</div>
+            <div class="cert-issuer">Coursera · Oct 2024</div>
+          </div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-icon">📝</div>
+          <div>
+            <div class="cert-name">Publication: Alumni Horizons (ICICC-2025)</div>
+            <div class="cert-issuer">Univ. of Delhi × NIT Patna × Univ. of Valladolid · Feb 2025</div>
+          </div>
+        </div>
+
+        <!-- ── ADD NEW CERT HERE ──
+        <div class="cert-item">
+          <div class="cert-icon">🏅</div>
+          <div>
+            <div class="cert-name">Your Certification Name</div>
+            <div class="cert-issuer">Issuer · Month Year</div>
+          </div>
+        </div>
+        ── END ── -->
+
+      </div><!-- /cert-list -->
+    </div><!-- /right column -->
+
+  </div><!-- /skills-layout -->
+</section>
