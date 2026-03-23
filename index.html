@@ -291,12 +291,115 @@
        ✏️  Edit: grid gap, bio text size
        ==================================================== */
     #about { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .about-grid {display: grid;grid-template-columns: 1fr auto 1fr;gap: 3rem;align-items: start;}
     .about-text p { font-size: 0.88rem; line-height: 1.9; color: var(--text); margin-bottom: 1.2rem; }
     .about-text p span { color: var(--green); font-weight: 500; }
     .about-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
     .about-link { display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: var(--muted); text-decoration: none; border: 1px solid var(--border); padding: 0.4rem 0.8rem; border-radius: 2px; transition: all 0.2s; }
     .about-link:hover { color: var(--green); border-color: var(--green); }
+    /* ── Profile photo ── */
+.about-photo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.about-photo-ring {
+  position: relative;
+  width: 220px;
+  height: 220px;
+}
+
+/* Spinning green dashed ring */
+.about-photo-ring::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px dashed var(--green);
+  animation: spinRing 8s linear infinite;
+  opacity: 0.6;
+}
+
+/* Static green solid ring */
+.about-photo-ring::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,255,136,0.2);
+}
+
+@keyframes spinRing {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* The actual photo */
+.about-photo {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  border: 3px solid var(--bg3);
+  filter: grayscale(20%);
+  transition: filter 0.3s ease;
+}
+
+.about-photo:hover {
+  filter: grayscale(0%);
+}
+
+/* Name tag below photo */
+.about-photo-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--white);
+  text-align: center;
+}
+
+.about-photo-title {
+  font-size: 0.7rem;
+  color: var(--green);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* Status badge */
+.about-photo-status {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.68rem;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  margin-top: 0.3rem;
+}
+
+.about-photo-status .status-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+/* Responsive — stack on mobile */
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .about-photo-wrap { padding-top: 0; }
+}
 
     /* ====================================================
        PROJECTS CSS
@@ -419,6 +522,7 @@
     .form-submit { background: var(--green); color: #0a0c0f; border: none; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; padding: 0.85rem 2rem; border-radius: 2px; transition: all 0.2s; align-self: flex-start; }
     .form-submit:hover { background: var(--green2); box-shadow: 0 0 30px rgba(0,255,136,0.25); transform: translateY(-1px); }
 
+
     /* Footer */
     footer { padding: 2rem 3rem; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; font-size: 0.72rem; color: var(--muted); }
     footer span { color: var(--green); }
@@ -505,13 +609,17 @@
        SECTION: ABOUT
        ✏️  Edit: terminal JSON values, 3 bio paragraphs,
                  social link hrefs
+       ✏️  Photo: drop your photo as images/profile.jpg
        ==================================================== -->
   <section id="about">
     <div class="section-header fade-up">
-      <div class="section-tag">about_me</div>
-      <h2 class="section-title">Who I Am <span class="dim">// the full picture</span></h2>
+     <!-- <div class="section-tag">about_me</div>-->
+      <h2 class="section-title">Who I Am </h2>
     </div>
+
     <div class="about-grid">
+
+      <!-- ── LEFT: Terminal card ── -->
       <div class="terminal-window fade-up">
         <div class="terminal-bar">
           <div class="t-dot red"></div>
@@ -520,34 +628,74 @@
           <div class="terminal-title">valmeeki@portfolio ~ profile.json</div>
         </div>
         <div class="terminal-body">
-          <div class="t-line"><span class="t-prompt">$</span><span class="t-cmd"> cat profile.json</span></div><br>
+          <div class="t-line">
+            <span class="t-prompt">$</span>
+            <span class="t-cmd"> cat profile.json</span>
+          </div>
+          <br>
           <div class="t-out">{</div>
-          <!-- ✏️  Update each value below -->
-          <div class="t-out">&nbsp;&nbsp;<span class="t-key">"name"</span>: <span class="t-val">"Valmeeki Singh"</span>,</div>
-          <div class="t-out">&nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-val">"Software Developer"</span>,</div>
-          <div class="t-out">&nbsp;&nbsp;<span class="t-key">"location"</span>: <span class="t-val">"Bengaluru, IN"</span>,</div>
-          <div class="t-out">&nbsp;&nbsp;<span class="t-key">"cgpa"</span>: <span class="t-val">8.3</span>,</div>
-          <div class="t-out">&nbsp;&nbsp;<span class="t-key">"specialization"</span>: <span class="t-val">"Cloud Computing"</span>,</div>
-          <div class="t-out">&nbsp;&nbsp;<span class="t-key">"cloud"</span>: [<span class="t-val">"Azure"</span>, <span class="t-val">"OCI"</span>],</div>
-          <div class="t-out">&nbsp;&nbsp;<span class="t-key">"languages"</span>: [<span class="t-val">"Python"</span>, <span class="t-val">"C++"</span>, <span class="t-val">"MySQL"</span>],</div>
-          <div class="t-out">&nbsp;&nbsp;<span class="t-key">"status"</span>: <span style="color:var(--green)">"open_to_work"</span></div>
-          <div class="t-out">}</div><br>
-          <div class="t-line"><span class="t-prompt">$</span><span class="t-comment"> # B.Tech IT — Alliance University 2026</span></div>
+          <div class="t-out"><span class="t-key">"name"</span><span class="t-colon">:</span><span class="t-val">"Valmeeki Singh"</span>,</div>
+          <div class="t-out"><span class="t-key">"status"</span><span class="t-colon">:</span><span style="color:var(--green)">"final_year_student"</span>,</div>
+          <div class="t-out"><span class="t-key">"seeking"</span><span class="t-colon">:</span><span class="t-val">"Entry-Level Software Developer"</span>,</div>
+          <div class="t-out"><span class="t-key">"location"</span><span class="t-colon">:</span><span class="t-val">"Bengaluru, IN"</span>,</div>
+          <div class="t-out"><span class="t-key">"cgpa"</span><span class="t-colon">:</span><span class="t-val">8.3</span>,</div>
+          <div class="t-out"><span class="t-key">"graduating"</span><span class="t-colon">:</span><span class="t-val">"July 2026"</span>,</div>
+          <div class="t-out"><span class="t-key">"specialization"</span><span class="t-colon">:</span><span class="t-val">"Cloud Computing"</span>,</div>
+          <div class="t-out"><span class="t-key">"cloud"</span><span class="t-colon">:</span>[<span class="t-val">"Azure"</span>, <span class="t-val">"OCI"</span>, <span class="t-val">"GCP"</span>],</div>
+          <div class="t-out"><span class="t-key">"skills"</span><span class="t-colon">:</span>[<span class="t-val">"Python"</span>, <span class="t-val">"React"</span>, <span class="t-val">"Django"</span>],</div>
+          <div class="t-out"><span class="t-key">"design"</span><span class="t-colon">:</span>[<span class="t-val">"Figma"</span>, <span class="t-val">"Photoshop"</span>],</div>
+          <div class="t-out"><span class="t-key">"open_to_work"</span><span class="t-colon">:</span><span style="color:var(--green)">true</span></div>
+          <div class="t-out">}</div>
+          <br>
+          <div class="t-line">
+            <span class="t-prompt">$</span>
+            <span class="t-comment"> # Graduating July 2026 · Alliance University</span>
+          </div>
         </div>
       </div>
+
+      <!-- ── MIDDLE: Profile photo ── -->
+      <div class="about-photo-wrap fade-up">
+        <div class="about-photo-ring">
+          <!-- ✏️  Make sure images/profile.jpg exists in your images folder -->
+          <img src="images/profile.jpg" alt="Valmeeki Singh" class="about-photo"/>
+        </div>
+        <div class="about-photo-name">Valmeeki Singh</div>
+        <div class="about-photo-title">Cloud · Full-Stack · UI/UX</div>
+        <div class="about-photo-status">
+          <div class="status-dot"></div>
+          Open to work
+        </div>
+      </div>
+
+      <!-- ── RIGHT: Bio text ── -->
       <div class="about-text fade-up">
-        <!-- ✏️  Edit these 3 paragraphs -->
-        <p>I'm a <span>final-year B.Tech student</span> specialising in Cloud Computing at Alliance University, Bengaluru, graduating in July 2026. I build intelligent, deployment-ready applications — from AI-powered web apps to cloud dashboards.</p>
-        <p>My most recent project, <span>TweetForge AI</span>, is a live React + Groq API application that generates on-brand tweets using LLaMA 3.3 70B. I've also published at <span>ICICC-2025</span>, an international conference at the University of Delhi in collaboration with NIT Patna and University of Valladolid, Spain.</p>
-        <p>I hold certifications in <span>OCI DevOps, Azure, Google Cloud Data Engineering</span>, and more. Actively seeking entry-level Software Developer roles in Bengaluru.</p>
+        <p>I'm a <span>final-year B.Tech student</span> specialising in
+          Cloud Computing at Alliance University, Bengaluru — graduating
+          July 2026. Alongside my degree I build real, deployed projects
+          that sit at the intersection of cloud infrastructure, full-stack
+          development, and AI integration.</p>
+
+        <p>My latest project <span>TweetForge AI</span> is live — a React
+          + Groq API app that generates on-brand tweets using LLaMA 3.3 70B.
+          I also do <span>UI/UX design and Photoshop work</span>, which you
+          can see in the Design section. And I've published research
+          at <span>ICICC-2025</span> (University of Delhi × NIT Patna ×
+          University of Valladolid, Spain).</p>
+
+        <p>I hold certifications in <span>OCI DevOps, Google Cloud Data
+          Engineering, and Web Design</span>. Currently going through campus
+          placements and open to <span>entry-level Software Developer,
+          Cloud Engineer, and UI/UX roles</span> in Bengaluru.</p>
+
         <div class="about-links">
-          <!-- ✏️  Update href for each link -->
-          <a href="https://github.com/Brijuval"           class="about-link" target="_blank">⌥ GitHub</a>
-          <a href="https://linkedin.com/in/valmeeki"      class="about-link" target="_blank">⌥ LinkedIn</a>
-          <a href="https://leetcode.com"                  class="about-link" target="_blank">⌥ LeetCode</a>
-          <a href="mailto:valmikisingh2001@gmail.com"     class="about-link">⌥ Email</a>
+          <a href="https://github.com/Brijuval"                            class="about-link" target="_blank">⌥ GitHub</a>
+          <a href="https://www.linkedin.com/in/valmeeki-singh-99469b24b/" class="about-link" target="_blank">⌥ LinkedIn</a>
+          <a href="https://leetcode.com/u/Valmiki_singh/"                 class="about-link" target="_blank">⌥ LeetCode</a>
+          <a href="mailto:valmikisingh2001@gmail.com"                     class="about-link">⌥ Email</a>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -565,7 +713,7 @@
 
       <!-- PROJECT 1 -->
       <div class="project-card fade-up">
-        <div class="project-featured">FEATURED</div>
+        <div class="project-featured"></div>
         <div class="project-num">01 / PROJECT</div>
         <h3 class="project-title">TweetForge AI</h3>
         <p class="project-desc">AI-powered brand tweet generator using React, Groq API &amp; LLaMA 3.3 70B. Supports 3 brand voice modes generating 10 tweets across 6 styles with animated brand voice scoring.</p>
