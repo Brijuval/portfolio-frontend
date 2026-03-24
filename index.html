@@ -406,8 +406,8 @@
        ✏️  Edit: card min-width, gap, hover shadow color
        ==================================================== */
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; }
-    .project-card { background: var(--bg2); border: 1px solid var(--border); padding: 2rem; position: relative; overflow: hidden; transition: all 0.3s; }
-    .project-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,255,136,0.03), transparent); opacity: 0; transition: opacity 0.3s; }
+    .project-card { background: var(--bg2); border: 1px solid var(--border); padding: 2rem; position: relative; overflow: hidden; transition: all 0.3s; cursor: pointer; }
+    .project-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,255,136,0.03), transparent); opacity: 0; transition: opacity 0.3s; pointer-events: none; }
     .project-card:hover { border-color: rgba(0,255,136,0.3); transform: translateY(-3px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
     .project-card:hover::after { opacity: 1; }
     .project-num { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 1rem; }
@@ -418,6 +418,32 @@
     .project-link { font-size: 0.72rem; color: var(--green); text-decoration: none; letter-spacing: 0.05em; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
     .project-link:hover { border-bottom-color: var(--green); }
     .project-featured { position: absolute; top: 1rem; right: 1rem; font-size: 0.6rem; color: var(--amber); border: 1px solid rgba(255,183,0,0.3); padding: 0.15rem 0.5rem; letter-spacing: 0.1em; }
+    
+    /* Project Image/Thumbnail */
+    .project-image-wrapper { position: relative; width: 100%; height: 200px; background: linear-gradient(135deg, rgba(0,255,136,0.05), rgba(0,212,255,0.05)); border: 1px solid var(--border); border-radius: 2px; overflow: hidden; margin-bottom: 1.5rem; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; }
+    .project-image-wrapper:hover { border-color: rgba(0,255,136,0.3); background: linear-gradient(135deg, rgba(0,255,136,0.1), rgba(0,212,255,0.1)); }
+    .project-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+    .project-image-placeholder { display: none; position: absolute; inset: 0; align-items: center; justify-content: center; font-size: 3rem; opacity: 0.35; color: var(--green); }
+    .project-link { position: relative; z-index: 2; }
+
+    /* Project Details Modal */
+    .project-modal { display: none; position: fixed; inset: 0; background: rgba(5,7,10,0.92); z-index: 2100; align-items: center; justify-content: center; padding: 1.2rem; backdrop-filter: blur(6px); }
+    .project-modal.open { display: flex; }
+    .project-modal-card { width: min(760px, 100%); max-height: 90vh; overflow: auto; background: var(--bg2); border: 1px solid rgba(0,255,136,0.28); box-shadow: 0 20px 80px rgba(0,0,0,0.55); padding: 1.4rem; }
+    .project-modal-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+    .project-modal-kicker { font-size: 0.65rem; letter-spacing: 0.12em; color: var(--green); text-transform: uppercase; }
+    .project-modal-title { font-family: 'Syne', sans-serif; font-size: 1.4rem; color: var(--white); margin-top: 0.35rem; }
+    .project-modal-close { border: 1px solid var(--border); background: transparent; color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; padding: 0.35rem 0.65rem; }
+    .project-modal-close:hover { color: var(--green); border-color: var(--green); }
+    .project-modal-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
+    .project-modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .project-modal-box { border: 1px solid var(--border); background: var(--bg); padding: 0.9rem; }
+    .project-modal-box h4 { font-size: 0.68rem; letter-spacing: 0.12em; color: var(--amber); text-transform: uppercase; margin-bottom: 0.55rem; }
+    .project-modal-list { margin: 0; padding-left: 1rem; color: var(--text); font-size: 0.78rem; line-height: 1.7; }
+    .project-modal-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+    .project-modal-btn { display: inline-block; border: 1px solid var(--green); color: var(--green); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.08em; padding: 0.45rem 0.75rem; }
+    .project-modal-btn:hover { background: rgba(0,255,136,0.12); }
+    .project-modal-btn.muted { border-color: var(--border); color: var(--muted); }
 
     /* ====================================================
        SKILLS CSS
@@ -535,6 +561,7 @@
       #hero { padding: 7rem 1.5rem 4rem; }
       .hero-stats { display: none; }
       .about-grid, .skills-layout, .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .project-modal-grid { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
   </style>
@@ -692,6 +719,7 @@
           <a href="https://github.com/Brijuval"                            class="about-link" target="_blank">⌥ GitHub</a>
           <a href="https://www.linkedin.com/in/valmeeki-singh-99469b24b/" class="about-link" target="_blank">⌥ LinkedIn</a>
           <a href="https://leetcode.com/u/Valmiki_singh/"                 class="about-link" target="_blank">⌥ LeetCode</a>
+          <a href="https://www.geeksforgeeks.org/profile/valmikisicvho?tab=activity" class="about-link" target="_blank">⌥ GeeksforGeeks</a>
           <a href="mailto:valmikisingh2001@gmail.com"                     class="about-link">⌥ Email</a>
         </div>
       </div>
@@ -706,14 +734,18 @@
        ==================================================== -->
   <section id="projects">
     <div class="section-header fade-up">
-      <div class="section-tag">projects</div>
-      <h2 class="section-title">What I've Built <span class="dim">// selected work</span></h2>
+     <!-- <div class="section-tag">projects</div> -->
+      <h2 class="section-title">What I've Built </h2>
     </div>
     <div class="projects-grid">
 
       <!-- PROJECT 1 -->
-      <div class="project-card fade-up">
-        <div class="project-featured"></div>
+      <div class="project-card fade-up" data-project-id="tweetforge">
+        
+        <div class="project-image-wrapper">
+          <img src="images/projects/tweetai.png" alt="TweetForge AI" onerror="this.style.display='none'; const ph=this.nextElementSibling; if (ph) ph.style.display='flex';">
+          <div class="project-image-placeholder" aria-hidden="true">🚀</div>
+        </div>
         <div class="project-num">01 / PROJECT</div>
         <h3 class="project-title">TweetForge AI</h3>
         <p class="project-desc">AI-powered brand tweet generator using React, Groq API &amp; LLaMA 3.3 70B. Supports 3 brand voice modes generating 10 tweets across 6 styles with animated brand voice scoring.</p>
@@ -721,13 +753,17 @@
           <span class="tag">React 18</span><span class="tag">Vite</span><span class="tag">Groq API</span><span class="tag">LLaMA 3.3 70B</span><span class="tag">Vercel</span>
         </div>
         <div class="project-links">
-          <a href="https://github.com/Brijuval/Tweetforge-ai" class="project-link" target="_blank">→ GitHub</a>
-          <a href="#" class="project-link" target="_blank">→ Live Demo</a>
+          <a href="https://github.com/Brijuval/Tweetforge-ai" class="project-link" target="_blank" rel="noopener noreferrer">→ GitHub</a>
+          <a href="https://tweetforge-ai.vercel.app/" class="project-link" target="_blank" rel="noopener noreferrer">→ Live Demo</a>
         </div>
       </div>
 
       <!-- PROJECT 2 -->
-      <div class="project-card fade-up">
+      <div class="project-card fade-up" data-project-id="analytics">
+        <div class="project-image-wrapper">
+          <img src="images/projects/dashboard.png" alt="Real-Time Sales Analytics Dashboard" onerror="this.style.display='none'; const ph=this.nextElementSibling; if (ph) ph.style.display='flex';">
+          <div class="project-image-placeholder" aria-hidden="true">📊</div>
+        </div>
         <div class="project-num">02 / PROJECT</div>
         <h3 class="project-title">Real-Time Sales Analytics Dashboard</h3>
         <p class="project-desc">Interactive BI dashboard built on Microsoft Azure + Power BI. Analyzes trends by location, time, and severity using DAX for computed metrics.</p>
@@ -735,12 +771,16 @@
           <span class="tag">Azure</span><span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">DAX</span>
         </div>
         <div class="project-links">
-          <a href="#" class="project-link" target="_blank">→ GitHub</a>
+          <a href="https://github.com/Brijuval/road-accident-analysis-powerbi" class="project-link" target="_blank">→ GitHub</a>
         </div>
       </div>
 
       <!-- PROJECT 3 -->
-      <div class="project-card fade-up">
+      <div class="project-card fade-up" data-project-id="portfolio">
+        <div class="project-image-wrapper">
+          <img src="images/projects/portfolio.png" alt="Portfolio Website" onerror="this.style.display='none'; const ph=this.nextElementSibling; if (ph) ph.style.display='flex';">
+          <div class="project-image-placeholder" aria-hidden="true">💼</div>
+        </div>
         <div class="project-num">03 / PROJECT</div>
         <h3 class="project-title">Portfolio Website</h3>
         <p class="project-desc">This site — dark terminal-aesthetic portfolio with vanilla HTML/CSS/JS frontend and Django REST backend including contact form and blog system.</p>
@@ -768,6 +808,31 @@
 
     </div>
   </section>
+
+  <!-- Project Details Modal -->
+  <div class="project-modal" id="projectModal" onclick="closeProjectModal()">
+    <div class="project-modal-card" onclick="event.stopPropagation()">
+      <div class="project-modal-head">
+        <div>
+          <div class="project-modal-kicker" id="projectModalKicker">Project Details</div>
+          <h3 class="project-modal-title" id="projectModalTitle"></h3>
+        </div>
+        <button class="project-modal-close" onclick="closeProjectModal()">[ ESC ] close</button>
+      </div>
+      <p class="project-modal-desc" id="projectModalDesc"></p>
+      <div class="project-modal-grid">
+        <div class="project-modal-box">
+          <h4>Speciality</h4>
+          <ul class="project-modal-list" id="projectModalSpeciality"></ul>
+        </div>
+        <div class="project-modal-box">
+          <h4>What I Built</h4>
+          <ul class="project-modal-list" id="projectModalBuilt"></ul>
+        </div>
+      </div>
+      <div class="project-modal-actions" id="projectModalActions"></div>
+    </div>
+  </div>
 
   <!-- ====================================================
        SECTION: SKILLS
@@ -1090,6 +1155,111 @@
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
 
+    /* ── PROJECT CARD MODAL ── */
+    const projectDetails = {
+      tweetforge: {
+        kicker: 'AI Product',
+        title: 'TweetForge AI',
+        desc: 'AI-powered brand tweet generator using React, Groq API and LLaMA 3.3 70B. Built for fast campaign ideation with structured outputs and tone control.',
+        speciality: [
+          'Prompt engineering for consistent brand voice',
+          'Multi-style tweet generation for content teams',
+          'Fast frontend UX with real-time output states'
+        ],
+        built: [
+          'React + Vite interface with clean component architecture',
+          'Integrated Groq API with response handling and fallbacks',
+          'Deployed production build on Vercel'
+        ],
+        links: [
+          { label: 'GitHub', href: 'https://github.com/Brijuval/Tweetforge-ai' },
+          { label: 'Live Demo', href: 'https://tweetforge-ai.vercel.app/' }
+        ]
+      },
+      analytics: {
+        kicker: 'Business Intelligence',
+        title: 'Real-Time Sales Analytics Dashboard',
+        desc: 'Power BI dashboard for trend analysis by geography, timeline, and incident severity with interactive slicing and DAX-based computed metrics.',
+        speciality: [
+          'Data storytelling with business KPIs',
+          'Interactive drill-down reports and filters',
+          'Cloud-backed reporting workflow'
+        ],
+        built: [
+          'Data model design and dashboard visualization',
+          'DAX measures for key metric calculations',
+          'Repository setup for reproducible dashboard assets'
+        ],
+        links: [
+          { label: 'GitHub', href: 'https://github.com/Brijuval/road-accident-analysis-powerbi' }
+        ]
+      },
+      portfolio: {
+        kicker: 'Personal Brand Platform',
+        title: 'Portfolio Website',
+        desc: 'Terminal-inspired portfolio site showcasing projects, design work, and contact channels with responsive layout and animated interactions.',
+        speciality: [
+          'Distinct visual identity with terminal-inspired UI',
+          'Responsive sections for projects, design, and contact',
+          'Performance-friendly vanilla frontend setup'
+        ],
+        built: [
+          'Single-page architecture in HTML/CSS/JS',
+          'Interactive effects: typing text, lightbox, custom cursor',
+          'Project-ready contact flow with backend integration option'
+        ],
+        links: [
+          { label: 'GitHub (soon)', href: '#' }
+        ]
+      }
+    };
+
+    function listItems(containerId, items) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+    }
+
+    function renderProjectActions(links) {
+      const actions = document.getElementById('projectModalActions');
+      actions.innerHTML = '';
+      links.forEach(link => {
+        const a = document.createElement('a');
+        a.textContent = `→ ${link.label}`;
+        a.className = link.href === '#' ? 'project-modal-btn muted' : 'project-modal-btn';
+        a.href = link.href;
+        if (link.href !== '#') {
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+        }
+        actions.appendChild(a);
+      });
+    }
+
+    function openProjectModal(projectId) {
+      const data = projectDetails[projectId];
+      if (!data) return;
+      document.getElementById('projectModalKicker').textContent = data.kicker;
+      document.getElementById('projectModalTitle').textContent = data.title;
+      document.getElementById('projectModalDesc').textContent = data.desc;
+      listItems('projectModalSpeciality', data.speciality);
+      listItems('projectModalBuilt', data.built);
+      renderProjectActions(data.links);
+      document.getElementById('projectModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProjectModal() {
+      document.getElementById('projectModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.project-card[data-project-id]').forEach(card => {
+      card.addEventListener('click', (event) => {
+        if (event.target.closest('a')) return;
+        openProjectModal(card.dataset.projectId);
+      });
+    });
+
     /* ── TYPING HERO EFFECT ──
        ✏️  Edit this array to change the rotating roles */
     const roles = [
@@ -1181,7 +1351,12 @@
       document.getElementById('lightbox').classList.remove('open');
       document.body.style.overflow = '';
     }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+        closeProjectModal();
+      }
+    });
 
   </script>
 </body>
