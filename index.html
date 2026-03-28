@@ -225,13 +225,75 @@
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
-    .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--green); letter-spacing: 0.05em; text-decoration: none; }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--green);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: text-shadow 0.24s ease, filter 0.24s ease;
+    }
     .nav-logo span { color: var(--white); }
+    .nav-logo.active-home {
+      text-shadow: 0 0 12px rgba(0,255,136,0.45), 0 0 24px rgba(0,255,136,0.22);
+      filter: brightness(1.08);
+    }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.1em; transition: color 0.2s; text-transform: uppercase; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      transition: color 0.2s, text-shadow 0.25s;
+      text-transform: uppercase;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -0.45rem;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--green), transparent);
+      opacity: 0;
+      transform: scaleX(0.2);
+      transform-origin: center;
+      transition: transform 0.24s ease, opacity 0.24s ease;
+    }
     .nav-links a:hover { color: var(--green); }
-    .nav-status { display: flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; color: var(--muted); }
-    .status-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+    .nav-links a.active {
+      color: var(--green);
+      text-shadow: 0 0 10px rgba(0,255,136,0.35);
+    }
+    .nav-links a.active::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+    .nav-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.66rem;
+      color: #9fb0c3;
+      letter-spacing: 0.07em;
+      text-transform: lowercase;
+      border: 1px solid rgba(0,255,136,0.22);
+      background: rgba(0,255,136,0.06);
+      border-radius: 999px;
+      padding: 0.28rem 0.68rem;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+    }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+      box-shadow: 0 0 0 3px rgba(0,255,136,0.12), 0 0 10px rgba(0,255,136,0.35);
+      flex-shrink: 0;
+    }
     @keyframes pulse {
       0%, 100% { opacity: 1; transform: scale(1); }
       50%       { opacity: 0.4; transform: scale(0.8); }
@@ -280,6 +342,63 @@
     .hero-desc { max-width: 560px; font-size: 0.9rem; color: var(--muted); line-height: 1.8; margin-bottom: 2.5rem; }
     .hero-desc span { color: var(--text); }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-badges-panel {
+      position: absolute;
+      top: 5.8rem;
+      right: 3rem;
+      width: fit-content;
+      z-index: 3;
+      padding: 0;
+    }
+    .hero-badges {
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.55rem;
+    }
+    .hero-badges-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #8ca0bb;
+      margin-right: 0.25rem;
+      width: auto;
+    }
+    .hero-badge-link {
+      width: 68px;
+      height: 68px;
+      border: 1px solid rgba(255,183,0,0.28);
+      border-radius: 10px;
+      background: linear-gradient(180deg, rgba(20,24,32,0.82), rgba(10,12,15,0.96));
+      display: grid;
+      place-items: center;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+    .hero-badge-link img {
+      max-width: 56px;
+      max-height: 56px;
+      object-fit: contain;
+      display: block;
+    }
+    .hero-badge-link:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0,212,255,0.55);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.35), 0 0 0 3px rgba(0,212,255,0.12);
+    }
+    .hero-badge-progress {
+      border: 1px dashed rgba(0,212,255,0.45);
+      color: var(--cyan);
+      background: rgba(0,212,255,0.08);
+      border-radius: 999px;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.36rem 0.62rem;
+      font-family: 'JetBrains Mono', monospace;
+      white-space: nowrap;
+    }
     .hero-stats { position: absolute; right: 3rem; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 1.5rem; }
     .stat-card { border: 1px solid var(--border); padding: 1.2rem 1.5rem; background: var(--bg2); min-width: 150px; text-align: center; position: relative; overflow: hidden; }
     .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--green), transparent); }
@@ -459,12 +578,251 @@
     .skill-name { font-size: 0.8rem; color: var(--text); }
     .skill-bar-wrap { width: 180px; height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
     .skill-bar { height: 100%; background: linear-gradient(90deg, var(--green), var(--cyan)); border-radius: 2px; }
+
+    .cert-container {
+      display: block;
+    }
+    .cert-timeline {
+      display: none;
+    }
+    .cert-year-btn {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-left: -1.5rem;
+      width: fit-content;
+      border: 1px solid var(--border);
+      background: rgba(10,12,15,0.95);
+      color: #8c99ab;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.55rem 0.72rem;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .cert-year-btn::before {
+      content: '';
+      position: absolute;
+      left: -13px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,183,0,0.3);
+      border: 2px solid rgba(255,183,0,0.5);
+      transition: all 0.2s ease;
+    }
+    .cert-year-btn:hover {
+      color: var(--amber);
+      border-color: rgba(255,183,0,0.45);
+    }
+    .cert-year-btn:hover::before {
+      background: rgba(255,183,0,0.5);
+      border-color: var(--amber);
+    }
+    .cert-year-btn.active {
+      background: rgba(255,183,0,0.15);
+      color: var(--amber);
+      border-color: rgba(255,183,0,0.62);
+      box-shadow: 0 0 0 3px rgba(255,183,0,0.1);
+    }
+    .cert-year-btn.active::before {
+      background: var(--amber);
+      border-color: var(--amber);
+      box-shadow: 0 0 8px rgba(255,183,0,0.6);
+    }
+    .cert-year-count {
+      font-size: 0.55rem;
+      background: rgba(255,183,0,0.2);
+      color: var(--amber);
+      padding: 0.22rem 0.44rem;
+      border-radius: 999px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    .cert-year-label {
+      display: none;
+    }
     .cert-list { display: flex; flex-direction: column; gap: 1rem; }
-    .cert-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: 2px; transition: border-color 0.2s; }
-    .cert-item:hover { border-color: rgba(0,255,136,0.3); }
-    .cert-icon { font-size: 1.4rem; flex-shrink: 0; }
-    .cert-name { font-size: 0.8rem; color: var(--white); margin-bottom: 0.2rem; }
-    .cert-issuer { font-size: 0.68rem; color: var(--muted); }
+    .cert-item {
+      padding: 1rem 1rem 0.95rem;
+      background: linear-gradient(180deg, rgba(20,24,32,0.7), rgba(10,12,15,0.95));
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    }
+    .cert-item:hover {
+      border-color: rgba(0,255,136,0.3);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
+      transform: translateY(-2px);
+    }
+    .cert-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 1rem;
+    }
+    .cert-actions {
+      display: flex;
+      align-items: center;
+      justify-self: end;
+      gap: 0.35rem;
+      min-width: 0;
+    }
+    .cert-category-badge {
+      width: 78px;
+      height: 60px;
+      border-radius: 0;
+      border: none;
+      background: transparent;
+      padding: 0;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      flex-shrink: 0;
+      max-width: 100%;
+    }
+    .cert-meta {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      min-width: 0;
+    }
+    .cert-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 1rem;
+      background: rgba(255,183,0,0.1);
+      border: 1px solid rgba(255,183,0,0.22);
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .cert-name {
+      font-size: 1rem;
+      line-height: 1.35;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+      letter-spacing: 0.01em;
+      font-weight: 600;
+    }
+    .cert-issuer {
+      font-size: 0.75rem;
+      color: #7d8ea4;
+      letter-spacing: 0.03em;
+    }
+    .cert-toggle {
+      border: 1px solid rgba(255,183,0,0.35);
+      background: rgba(255,183,0,0.08);
+      color: var(--amber);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      padding: 0.47rem 0.72rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .cert-toggle:hover,
+    .cert-toggle[aria-expanded="true"] {
+      background: rgba(255,183,0,0.17);
+      border-color: rgba(255,183,0,0.62);
+      box-shadow: 0 0 0 3px rgba(255,183,0,0.08);
+    }
+    .cert-proof {
+      margin-top: 0.95rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 0.95rem;
+    }
+    .cert-proof-media {
+      display: grid;
+      grid-template-columns: 1fr 120px;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .cert-media-frame,
+    .cert-badge-frame {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.02);
+    }
+    .cert-media-frame { aspect-ratio: 16 / 9; }
+    .cert-badge-frame {
+      aspect-ratio: 1 / 1;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.03);
+    }
+    .cert-media-frame img,
+    .cert-badge-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .cert-reflection {
+      display: grid;
+      gap: 0.45rem;
+      margin-bottom: 0.8rem;
+    }
+    .cert-reflection p {
+      margin: 0;
+      font-size: 0.75rem;
+      color: #b5c2d2;
+      line-height: 1.65;
+    }
+    .cert-reflection span {
+      color: var(--amber);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .cert-verify {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border: 1px solid rgba(0,212,255,0.28);
+      background: rgba(0,212,255,0.07);
+      color: var(--cyan);
+      text-decoration: none;
+      font-size: 0.64rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 0.44rem 0.68rem;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+    }
+    .cert-verify:hover {
+      border-color: rgba(0,212,255,0.56);
+      background: rgba(0,212,255,0.16);
+      transform: translateY(-1px);
+    }
+    .cert-item.is-hidden {
+      display: none;
+    }
+    .cert-item.cert-reveal {
+      animation: certReveal 0.45s ease both;
+    }
+    @keyframes certReveal {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .cert-media-hidden { display: none; }
 
     /* ====================================================
        DESIGN CSS
@@ -558,10 +916,42 @@
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
       section { padding: 4rem 1.5rem; }
-      #hero { padding: 7rem 1.5rem 4rem; }
-      .hero-stats { display: none; }
+      #hero { padding: 7rem 1.5rem 4rem; align-items: flex-start; flex-direction: column; }
+      .hero-content { max-width: 100%; width: 100%; }
+      .hero-badges-panel {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: fit-content;
+        max-width: 100%;
+        align-self: flex-start;
+        margin: 0 0 1.25rem;
+      }
+      .hero-stats {
+        position: static;
+        right: auto;
+        top: auto;
+        transform: none;
+        width: 100%;
+        margin-top: 1.2rem;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.75rem;
+      }
+      .stat-card { min-width: 0; padding: 0.85rem 0.6rem; }
+      .stat-num { font-size: 1.45rem; }
+      .stat-label { font-size: 0.58rem; letter-spacing: 0.08em; }
       .about-grid, .skills-layout, .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
       .project-modal-grid { grid-template-columns: 1fr; }
+      .hero-badges-label { margin-bottom: 0.15rem; }
+      .hero-badge-link { width: 58px; height: 58px; }
+      .hero-badge-link img { max-width: 46px; max-height: 46px; }
+      .cert-head { grid-template-columns: 1fr; gap: 0.7rem; }
+      .cert-actions { justify-self: start; gap: 0.4rem; }
+      .cert-category-badge { width: 64px; height: 48px; }
+      .cert-proof-media { grid-template-columns: 1fr; }
+      .cert-badge-frame { max-width: 112px; }
+      .cert-container { display: block; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
   </style>
@@ -582,6 +972,7 @@
       <li><a href="#about">about</a></li>
       <li><a href="#projects">projects</a></li>
       <li><a href="#skills">skills</a></li>
+      <li><a href="#achievements">achievements</a></li>
       <li><a href="#design">design</a></li>
       <li><a href="#blog">blog</a></li>
       <li><a href="#contact">contact</a></li>
@@ -606,6 +997,17 @@
   <section id="hero">
     <div class="hero-grid"></div>
     <div class="hero-glow"></div>
+    <div class="hero-badges-panel">
+      <div class="hero-badges" aria-label="Featured earned badges">
+        <!-- <div class="hero-badges-label">Featured badges</div> -->
+        <a class="hero-badge-link" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=0ACFFB89BE4175839C6AC0648266DD25034D21289560A241A6FE364F44148BD0" target="_blank" rel="noopener noreferrer" title="Oracle OCI DevOps Professional">
+          <img src="images/certification/oracle devops logo.png" alt="Oracle OCI DevOps badge" loading="lazy">
+        </a>
+        <a class="hero-badge-link" href="https://www.coursera.org/user/ee44a07585b5bf39f2376593bb777296" target="_blank" rel="noopener noreferrer" title="Coursera profile">
+          <img src="images/certification/COUR_BIG.png" alt="Data security badge" loading="lazy">
+        </a>
+      </div>
+    </div>
     <div class="hero-content">
       <div class="hero-tag">Final Year B.Tech — Cloud Computing</div>
       <h1 class="hero-name">Valmeeki<br><span class="accent">Singh</span></h1>
@@ -842,8 +1244,8 @@
        ==================================================== -->
   <section id="skills">
     <div class="section-header fade-up">
-      <div class="section-tag">skills_and_certs</div>
-      <h2 class="section-title">Tech Stack <span class="dim">// tools I use</span></h2>
+      <!--<div class="section-tag">skills_and_certs</div>-->
+      <h2 class="section-title">Tech Stack & Certifications</h2>
     </div>
     <div class="skills-layout">
       <div class="fade-up">
@@ -868,20 +1270,164 @@
         <div class="skill-category">
           <div class="skill-cat-title">Cloud Platforms</div>
           <div class="skill-item"><span class="skill-name">Microsoft Azure</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
-          <div class="skill-item"><span class="skill-name">Oracle Cloud (OCI)</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:78%"></div></div></div>
-          <div class="skill-item"><span class="skill-name">Google Cloud</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:60%"></div></div></div>
+          <div class="skill-item"><span class="skill-name">AWS</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:78%"></div></div></div>
         </div>
 
       </div>
       <div class="fade-up">
         <div class="skill-cat-title" style="color:var(--amber)">Certifications</div>
-        <div class="cert-list">
+        <div class="cert-container">
+          <div class="cert-list">
           <!-- ✏️  Copy a cert-item block to add a new certification -->
-          <div class="cert-item"><div class="cert-icon">☁️</div><div><div class="cert-name">OCI DevOps Professional</div><div class="cert-issuer">Oracle · Oct 2025</div></div></div>
-          <div class="cert-item"><div class="cert-icon">🔒</div><div><div class="cert-name">Data, Security and Privacy</div><div class="cert-issuer">Coursera · Mar 2025</div></div></div>
-          <div class="cert-item"><div class="cert-icon">📊</div><div><div class="cert-name">Google Cloud: Cloud Data Engineer</div><div class="cert-issuer">Coursera · Apr 2024</div></div></div>
-          <div class="cert-item"><div class="cert-icon">🎨</div><div><div class="cert-name">Web Design: Wireframes to Prototypes</div><div class="cert-issuer">Coursera · Oct 2024</div></div></div>
-          <div class="cert-item"><div class="cert-icon">📝</div><div><div class="cert-name">Publication: Alumni Horizons (ICICC-2025)</div><div class="cert-issuer">Univ. of Delhi × NIT Patna · Feb 2025</div></div></div>
+          <article class="cert-item" data-year="2025">
+            <div class="cert-head">
+              <div class="cert-meta">
+                <div class="cert-icon">☁️</div>
+                <div>
+                  <div class="cert-name">OCI DevOps Professional</div>
+                  <div class="cert-issuer">Oracle · Oct 2025</div>
+                </div>
+              </div>
+              <div class="cert-actions">
+                <img class="cert-category-badge" src="images/certification/oracle devops logo.png" alt="OCI DevOps badge" loading="lazy">
+                <button class="cert-toggle" type="button" aria-expanded="false">view proof</button>
+              </div>
+            </div>
+            <div class="cert-proof" hidden>
+              <div class="cert-proof-media">
+                <div class="cert-media-frame">
+                  <img src="images/certification/oracle devops.pdf" alt="OCI DevOps Professional certificate proof" loading="lazy">
+                </div>
+            
+              </div>
+              <div class="cert-reflection">
+                <p><span>What I learned:</span> CI/CD pipeline setup, Infrastructure as Code workflows, and release automation on OCI.</p>
+                <p><span>How I applied it:</span> I used these practices to structure deployment flow and environment management in my cloud projects.</p>
+              </div>
+              <a class="cert-verify" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=0ACFFB89BE4175839C6AC0648266DD25034D21289560A241A6FE364F44148BD0">verify credential</a>
+            </div>
+          </article>
+
+
+
+          <article class="cert-item" data-year="2025">
+            <div class="cert-head">
+              <div class="cert-meta">
+                <div class="cert-icon">☁️</div>
+                <div>
+                  <div class="cert-name">Migration Architect Certified Professiona</div>
+                  <div class="cert-issuer">Oracle · aug 2025</div>
+                </div>
+              </div>
+              <div class="cert-actions">
+                <img class="cert-category-badge" src="images/certification/migaration of cloud.png" alt="Migration Architect badge" loading="lazy">
+                <button class="cert-toggle" type="button" aria-expanded="false">view proof</button>
+              </div>
+            </div>
+            <div class="cert-proof" hidden>
+              <div class="cert-proof-media">
+                <div class="cert-media-frame">
+                  <img src="images/certification/migration-architect.pdf" alt="Migration Architect Certified Professional certificate proof" loading="lazy">
+                </div>
+            
+              </div>
+              <div class="cert-reflection">
+                <p><span>What I learned:</span> CI/CD pipeline setup, Infrastructure as Code workflows, and release automation on OCI.</p>
+                <p><span>How I applied it:</span> I used these practices to structure deployment flow and environment management in my cloud projects.</p>
+              </div>
+              <a class="cert-verify" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=0ACFFB89BE4175839C6AC0648266DD25034D21289560A241A6FE364F44148BD0">verify credential</a>
+            </div>
+          </article>
+
+          <article class="cert-item" data-year="2025">
+            <div class="cert-head">
+              <div class="cert-meta">
+                <div class="cert-icon">🔒</div>
+                <div>
+                  <div class="cert-name">Data, Security and Privacy</div>
+                  <div class="cert-issuer">Coursera · Mar 2025</div>
+                </div>
+              </div>
+              <div class="cert-actions">
+                <img class="cert-category-badge" src="images/certification/COUR_BIG.png" alt="Data security badge" loading="lazy">
+                <button class="cert-toggle" type="button" aria-expanded="false">view proof</button>
+              </div>
+            </div>
+            <div class="cert-proof" hidden>
+              <div class="cert-proof-media">
+                <div class="cert-media-frame">
+                  <img src="images/certification/Data, Security, and Privacy.pdf" alt="Data, Security and Privacy certificate proof" loading="lazy">
+                </div>
+                <div class="cert-badge-frame">
+                  <img src="images/certs/data-security-badge.png" alt="Data security course badge" loading="lazy">
+                </div>
+              </div>
+              <div class="cert-reflection">
+                <p><span>What I learned:</span> Data handling principles, privacy controls, and practical security foundations for applications.</p>
+                <p><span>How I applied it:</span> I started enforcing safer data practices in form handling and API integration across my full-stack work.</p>
+              </div>
+              <a class="cert-verify" href="https://coursera.org/verify/OSPK4320U49H" target="_blank" rel="noopener noreferrer">verify credential</a>
+            </div>
+          </article>
+
+          <article class="cert-item" data-year="2024">
+            <div class="cert-head">
+              <div class="cert-meta">
+                <div class="cert-icon">📊</div>
+                <div>
+                  <div class="cert-name">Google Cloud: Cloud Data Engineer</div>
+                  <div class="cert-issuer">Coursera · Apr 2024</div>
+                </div>
+              </div>
+              <div class="cert-actions">
+                <img class="cert-category-badge" src="images/certification/COUR_BIG.png" alt="Google Cloud Data Engineer badge" loading="lazy">
+                <button class="cert-toggle" type="button" aria-expanded="false">view proof</button>
+              </div>
+            </div>
+            <div class="cert-proof" hidden>
+              <div class="cert-proof-media">
+                <div class="cert-media-frame">
+                  <img src="images/certification/GCP-Data-Engineer.pdf" alt="Google Cloud Data Engineer certificate proof" loading="lazy">
+                </div>
+          
+              </div>
+              <div class="cert-reflection">
+                <p><span>What I learned:</span> Cloud data workflows, analytics pipeline concepts, and platform-level data engineering practices.</p>
+                <p><span>How I applied it:</span> These concepts directly improved the structure of my analytics dashboard work on cloud tooling.</p>
+              </div>
+              <a class="cert-verify" href="https://coursera.org/verify/professional-cert/HTN9QCUBUV7N" target="_blank" rel="noopener noreferrer">verify credential</a>
+            </div>
+          </article>
+
+          <article class="cert-item" data-year="2024">
+            <div class="cert-head">
+              <div class="cert-meta">
+                <div class="cert-icon">🎨</div>
+                <div>
+                  <div class="cert-name">Web Design: Wireframes to Prototypes</div>
+                  <div class="cert-issuer">Coursera · Oct 2024</div>
+                </div>
+              </div>
+              <div class="cert-actions">
+                <img class="cert-category-badge" src="images/certification/COUR_BIG.png" alt="Web design badge" loading="lazy">
+                <button class="cert-toggle" type="button" aria-expanded="false">view proof</button>
+              </div>
+            </div>
+            <div class="cert-proof" hidden>
+              <div class="cert-proof-media">
+                <div class="cert-media-frame">
+                  <img src="images/certification/Web-Design-Wireframes-to-Prototypes.pdf" alt="Web Design Wireframes to Prototypes certificate proof" loading="lazy">
+                </div>
+      
+              </div>
+              <div class="cert-reflection">
+                <p><span>What I learned:</span> UX flow thinking, wireframing fundamentals, and converting concepts into usable visual prototypes.</p>
+                <p><span>How I applied it:</span> I used this process while designing portfolio UI sections and structured visual hierarchy in my design work.</p>
+              </div>
+              <a class="cert-verify" href="https://coursera.org/verify/YC9YWEI92Y8H" target="_blank" rel="noopener noreferrer">verify credential</a>
+            </div>
+          </article>
+          </div>
         </div>
       </div>
     </div>
@@ -900,8 +1446,7 @@
        ==================================================== -->
   <section id="design">
     <div class="section-header fade-up">
-      <div class="section-tag">design_work</div>
-      <h2 class="section-title">Creative Work <span class="dim">// ui · photoshop · posters · web</span></h2>
+      <h2 class="section-title">Creative Work</h2>
     </div>
     <div class="design-filter-bar fade-up">
       <button class="filter-btn active" onclick="filterDesign('all',this)">all_work()</button>
@@ -981,6 +1526,45 @@
         </div>
         <div class="design-overlay"><div class="design-card-cat">Poster / Social Media</div><div class="design-card-title">Event Poster Design</div><div class="design-card-desc">Bold typography and visual hierarchy.</div><div class="design-card-tools"><span class="tag">Photoshop</span></div></div>
       </div> 
+
+    </div>
+  </section>
+
+  <!-- ====================================================
+       SECTION: ACHIEVEMENTS
+       ✏️  To add/update entries: copy one card block, then
+           update title, date, summary, and link
+       ==================================================== -->
+  <section id="achievements">
+    <div class="section-header fade-up">
+      <div class="section-tag">achievements</div>
+      <h2 class="section-title">Achievements &amp; Competitions <span class="dim">// highlights</span></h2>
+    </div>
+    <div class="blog-grid">
+
+      <div class="blog-card fade-up">
+        <div class="blog-coming-soon">ACHIEVEMENT</div>
+        <div class="blog-meta"><span class="blog-tag-label">Research</span><span>Feb 2025</span></div>
+        <h3 class="blog-title">ICICC-2025 Research Publication</h3>
+        <p class="blog-excerpt">Presented published research work at ICICC-2025 hosted by University of Delhi in collaboration with NIT Patna and University of Valladolid, Spain.</p>
+        <a href="#blog" class="blog-read-more">→ View write-up</a>
+      </div>
+
+      <div class="blog-card fade-up">
+        <div class="blog-coming-soon">COMPETITION</div>
+        <div class="blog-meta"><span class="blog-tag-label">Coding</span><span>Update Date</span></div>
+        <h3 class="blog-title">Add Your Hackathon / Competition Name</h3>
+        <p class="blog-excerpt">Replace this with your rank, finalist status, or milestone and a one-line summary of what you built or solved.</p>
+        <a href="#" class="blog-read-more">→ Add result link</a>
+      </div>
+
+      <div class="blog-card fade-up">
+        <div class="blog-coming-soon">ACHIEVEMENT</div>
+        <div class="blog-meta"><span class="blog-tag-label">Career</span><span>Update Date</span></div>
+        <h3 class="blog-title">Add Your Next Milestone</h3>
+        <p class="blog-excerpt">Use this card for scholarship, internship selection, top performer status, or notable leadership outcome.</p>
+        <a href="#" class="blog-read-more">→ Add proof link</a>
+      </div>
 
     </div>
   </section>
@@ -1153,6 +1737,46 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+
+    /* ── NAVBAR SCROLL-SPY (highlight current section) ── */
+    const navLogo = document.querySelector('.nav-logo');
+    const navSectionLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+    const trackedSections = navSectionLinks
+      .map(link => {
+        const id = link.getAttribute('href').slice(1);
+        return { id, link, section: document.getElementById(id) };
+      })
+      .filter(item => item.section);
+
+    function setActiveNavLink(activeId) {
+      navSectionLinks.forEach(link => {
+        const isActive = link.getAttribute('href') === `#${activeId}`;
+        link.classList.toggle('active', isActive);
+      });
+
+      if (navLogo) {
+        const isHome = !activeId || activeId === 'hero';
+        navLogo.classList.toggle('active-home', isHome);
+      }
+    }
+
+    function updateActiveNavLink() {
+      const scrollMarker = window.scrollY + 180;
+      let currentId = '';
+
+      trackedSections.forEach(item => {
+        if (scrollMarker >= item.section.offsetTop) {
+          currentId = item.id;
+        }
+      });
+
+      setActiveNavLink(currentId);
+    }
+
+    updateActiveNavLink();
+    window.addEventListener('scroll', updateActiveNavLink, { passive: true });
+    window.addEventListener('resize', updateActiveNavLink);
 
 
     /* ── PROJECT CARD MODAL ── */
@@ -1351,6 +1975,114 @@
       document.getElementById('lightbox').classList.remove('open');
       document.body.style.overflow = '';
     }
+
+
+    /* ── CERTIFICATION PROOF TOGGLE ── */
+    function initCertificationCards() {
+      const certItems = document.querySelectorAll('.cert-item');
+
+      certItems.forEach(item => {
+        const toggle = item.querySelector('.cert-toggle');
+        const proof = item.querySelector('.cert-proof');
+        if (!toggle || !proof) return;
+
+        toggle.addEventListener('click', () => {
+          const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+
+          if (!isOpen) {
+            certItems.forEach(other => {
+              if (other === item) return;
+              const otherToggle = other.querySelector('.cert-toggle');
+              const otherProof = other.querySelector('.cert-proof');
+              if (!otherToggle || !otherProof) return;
+              otherToggle.setAttribute('aria-expanded', 'false');
+              otherToggle.textContent = 'view proof';
+              otherProof.hidden = true;
+            });
+          }
+
+          toggle.setAttribute('aria-expanded', String(!isOpen));
+          toggle.textContent = isOpen ? 'view proof' : 'hide proof';
+          proof.hidden = isOpen;
+        });
+
+        proof.querySelectorAll('img').forEach(img => {
+          img.addEventListener('error', () => {
+            const frame = img.closest('.cert-media-frame, .cert-badge-frame');
+            if (frame) frame.classList.add('cert-media-hidden');
+          });
+        });
+      });
+    }
+
+    /* ── CERTIFICATION TIMELINE FILTER ── */
+    function initCertificationTimeline() {
+      const yearButtons = document.querySelectorAll('.cert-year-btn');
+      const certItems = document.querySelectorAll('.cert-item');
+      const yearLabel = document.getElementById('certYearLabel');
+
+      if (!yearButtons.length || !certItems.length) return;
+
+      // Count certifications by year
+      const yearCounts = { all: certItems.length };
+      certItems.forEach(item => {
+        const year = item.dataset.year;
+        yearCounts[year] = (yearCounts[year] || 0) + 1;
+      });
+
+      // Update count badges
+      yearButtons.forEach(btn => {
+        const year = btn.dataset.year;
+        const countBadge = btn.querySelector('.cert-year-count');
+        if (countBadge) {
+          countBadge.textContent = yearCounts[year] || 0;
+        }
+      });
+
+      function applyYearFilter(year) {
+        yearButtons.forEach(btn => {
+          const isActive = btn.dataset.year === year;
+          btn.classList.toggle('active', isActive);
+          btn.setAttribute('aria-selected', String(isActive));
+        });
+
+        if (yearLabel) {
+          yearLabel.textContent = year === 'all' ? 'all years' : year;
+        }
+
+        certItems.forEach(item => {
+          const show = year === 'all' || item.dataset.year === year;
+          const toggle = item.querySelector('.cert-toggle');
+          const proof = item.querySelector('.cert-proof');
+
+          if (!show) {
+            item.classList.add('is-hidden');
+            if (toggle && proof) {
+              toggle.setAttribute('aria-expanded', 'false');
+              toggle.textContent = 'view proof';
+              proof.hidden = true;
+            }
+            return;
+          }
+
+          item.classList.remove('is-hidden');
+          item.classList.remove('cert-reveal');
+          void item.offsetWidth;
+          item.classList.add('cert-reveal');
+        });
+      }
+
+      yearButtons.forEach(btn => {
+        btn.addEventListener('click', () => applyYearFilter(btn.dataset.year));
+      });
+
+      const activeBtn = document.querySelector('.cert-year-btn.active');
+      applyYearFilter(activeBtn ? activeBtn.dataset.year : 'all');
+    }
+
+    initCertificationCards();
+    initCertificationTimeline();
+
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         closeLightbox();

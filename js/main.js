@@ -203,6 +203,54 @@ function closeLightbox() {
   document.body.style.overflow = '';
 }
 
+
+/* ── 7. CERTIFICATION PROOF TOGGLE ────────────────────────── */
+
+function initCertificationCards() {
+  const certItems = document.querySelectorAll('.cert-item');
+
+  certItems.forEach(item => {
+    const toggle = item.querySelector('.cert-toggle');
+    const proof = item.querySelector('.cert-proof');
+
+    if (!toggle || !proof) return;
+
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+
+      // Keep the section clean: close other cards when opening a new one.
+      if (!isOpen) {
+        certItems.forEach(otherItem => {
+          if (otherItem === item) return;
+          const otherToggle = otherItem.querySelector('.cert-toggle');
+          const otherProof = otherItem.querySelector('.cert-proof');
+          if (!otherToggle || !otherProof) return;
+
+          otherToggle.setAttribute('aria-expanded', 'false');
+          otherToggle.textContent = 'view proof';
+          otherProof.hidden = true;
+        });
+      }
+
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      toggle.textContent = isOpen ? 'view proof' : 'hide proof';
+      proof.hidden = isOpen;
+    });
+
+    const proofImages = proof.querySelectorAll('img');
+    proofImages.forEach(img => {
+      img.addEventListener('error', () => {
+        const frame = img.closest('.cert-media-frame, .cert-badge-frame');
+        if (frame) {
+          frame.classList.add('cert-media-hidden');
+        }
+      });
+    });
+  });
+}
+
+initCertificationCards();
+
 // Close lightbox with ESC key
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeLightbox();
