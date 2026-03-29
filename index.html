@@ -972,8 +972,8 @@
       <li><a href="#about">about</a></li>
       <li><a href="#projects">projects</a></li>
       <li><a href="#skills">skills</a></li>
-      <li><a href="#achievements">achievements</a></li>
       <li><a href="#design">design</a></li>
+      <li><a href="#achievements">achievements</a></li>
       <li><a href="#blog">blog</a></li>
       <li><a href="#contact">contact</a></li>
     </ul>
@@ -1537,8 +1537,7 @@
        ==================================================== -->
   <section id="achievements">
     <div class="section-header fade-up">
-      <div class="section-tag">achievements</div>
-      <h2 class="section-title">Achievements &amp; Competitions <span class="dim">// highlights</span></h2>
+      <h2 class="section-title">Achievements &amp; Competitions </span></h2>
     </div>
     <div class="blog-grid">
 
@@ -1586,8 +1585,7 @@
        ==================================================== -->
   <section id="blog">
     <div class="section-header fade-up">
-      <div class="section-tag">blog</div>
-      <h2 class="section-title">Writing <span class="dim">// thoughts &amp; learnings</span></h2>
+      <h2 class="section-title">Writing </h2>
     </div>
     <div class="blog-grid">
 
@@ -1625,8 +1623,7 @@
        ==================================================== -->
   <section id="contact">
     <div class="section-header fade-up">
-      <div class="section-tag">contact</div>
-      <h2 class="section-title">Get In Touch <span class="dim">// let's connect</span></h2>
+      <h2 class="section-title">Get In Touch </h2>
     </div>
     <div class="contact-layout">
       <div class="fade-up">
@@ -1762,14 +1759,22 @@
     }
 
     function updateActiveNavLink() {
-      const scrollMarker = window.scrollY + 180;
+      const viewportMarker = window.innerHeight * 0.42;
       let currentId = '';
 
-      trackedSections.forEach(item => {
-        if (scrollMarker >= item.section.offsetTop) {
+      for (const item of trackedSections) {
+        const rect = item.section.getBoundingClientRect();
+        const isMarkerInside = rect.top <= viewportMarker && rect.bottom > viewportMarker;
+
+        if (isMarkerInside) {
+          currentId = item.id;
+          break;
+        }
+
+        if (rect.top <= viewportMarker) {
           currentId = item.id;
         }
-      });
+      }
 
       setActiveNavLink(currentId);
     }
