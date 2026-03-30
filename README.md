@@ -34,7 +34,6 @@ portfolio-components/
 └── js/
     └── main.js                  → ALL JavaScript (cursor, typing, form, filter, lightbox)
 ```
-
 ---
 
 ## ✏️  What to edit for common updates
@@ -47,7 +46,7 @@ portfolio-components/
 --amber:  #ffb700;   /* certifications */
 ```
 
-### Update your name / title
+### Update your name/title
 → Open `sections/hero.html`
 - Line with `Valmeeki` → change name
 - Line with `hero-tag` → change the pill subtitle
