@@ -834,12 +834,12 @@
     .filter-btn { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.4rem 1rem; border: 1px solid var(--border); background: transparent; color: var(--muted); border-radius: 2px; transition: all 0.2s; }
     .filter-btn:hover { color: var(--text); border-color: var(--muted); }
     .filter-btn.active { background: var(--green); color: #0a0c0f; border-color: var(--green); font-weight: 700; }
-    .design-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
-    .design-card { position: relative; background: var(--bg2); border: 1px solid var(--border); overflow: hidden; transition: all 0.35s cubic-bezier(0.4,0,0.2,1); }
+    .design-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; align-items: stretch; }
+    .design-card { position: relative; background: #0b0f14; border: 1px solid var(--border); overflow: hidden; transition: all 0.35s cubic-bezier(0.4,0,0.2,1); aspect-ratio: 4 / 5; }
     .design-card.hidden { display: none; }
     .design-card:hover { border-color: rgba(0,255,136,0.4); transform: translateY(-4px); box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
-    .design-thumb { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .design-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .design-thumb { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #0b0f14; }
+    .design-thumb img { width: 100%; height: 100%; object-fit: contain; object-position: center; padding: 0.45rem; display: block; transition: transform 0.45s ease; }
     .design-card:hover .design-thumb img { transform: scale(1.06); }
     .design-thumb-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.1em; transition: transform 0.5s ease; }
     .design-card:hover .design-thumb-placeholder { transform: scale(1.04); }
@@ -849,8 +849,8 @@
     .ph-photo  { background: linear-gradient(135deg, #1a0f2e, #2d1a4a, #1f0d35); }
     .ph-poster { background: linear-gradient(135deg, #2e1a0f, #4a2d1a, #351f0d); }
     .ph-web    { background: linear-gradient(135deg, #0f2e1a, #1a4a2d, #0d350f); }
-    .design-overlay { position: absolute; inset: 0; background: rgba(10,12,15,0.88); display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; padding: 1.4rem; opacity: 0; transition: opacity 0.3s ease; }
-    .design-card:hover .design-overlay { opacity: 1; }
+    .design-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,12,15,0.95) 0%, rgba(10,12,15,0.36) 45%, rgba(10,12,15,0.04) 78%); display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; padding: 1rem; opacity: 1; transition: background 0.3s ease; }
+    .design-card:hover .design-overlay { background: linear-gradient(to top, rgba(10,12,15,0.97) 0%, rgba(10,12,15,0.5) 50%, rgba(10,12,15,0.1) 82%); }
     .design-card-cat { font-size: 0.62rem; color: var(--green); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.4rem; }
     .design-card-title { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; line-height: 1.3; }
     .design-card-desc { font-size: 0.72rem; color: var(--muted); line-height: 1.6; }
@@ -866,7 +866,7 @@
     .lightbox { display: none; position: fixed; inset: 0; background: rgba(5,7,10,0.95); z-index: 2000; align-items: center; justify-content: center; backdrop-filter: blur(12px); }
     .lightbox.open { display: flex; }
     .lightbox-inner { max-width: 900px; width: 90%; position: relative; }
-    .lightbox-img { width: 100%; border: 1px solid var(--border); border-radius: 2px; display: block; }
+    .lightbox-img { width: 100%; max-height: 82vh; object-fit: contain; background: #0b0f14; border: 1px solid var(--border); border-radius: 2px; display: block; }
     .lightbox-close { position: absolute; top: -2.5rem; right: 0; font-size: 0.75rem; color: var(--muted); letter-spacing: 0.1em; background: none; border: none; font-family: 'JetBrains Mono', monospace; transition: color 0.2s; }
     .lightbox-close:hover { color: var(--green); }
     .lightbox-caption { margin-top: 1rem; font-size: 0.8rem; color: var(--muted); text-align: center; }
@@ -1535,10 +1535,7 @@
       <div class="design-card" data-cat="uiux" onclick="openLightbox('images/cycleui.jpg','Bike Pro Plus — Web UI')">
         <div class="design-badge badge-uiux">UI/UX</div>
         <div class="design-thumb ph-uiux">
-          <div class="design-thumb">
-            <img src="images/cycleui.jpg" alt="Home page design">
-            </div>
-          
+          <img src="images/cycleui.jpg" alt="Home page design" loading="lazy">
         </div>
         <div class="design-overlay"><div class="design-card-cat">UI / UX Design</div><div class="design-card-title">Home Page Design</div><div class="design-card-desc">Wireframes and hi-fi mockups.</div><div class="design-card-tools"><span class="tag">Photoshop</span></div></div>
       </div>
@@ -1546,9 +1543,7 @@
       <div class="design-card" data-cat="photo" onclick="openLightbox('images/moscow.jpg','Moscow — Text Masking Effect')">
         <div class="design-badge badge-photo">Photoshop</div>
         <div class="design-thumb ph-photo">
-         <div class="design-thumb">
-           <img src="images/moscow.jpg" alt="Moscow cityscape">
-              </div>
+           <img src="images/moscow.jpg" alt="Moscow cityscape" loading="lazy">
         </div>
         <div class="design-overlay"><div class="design-card-cat">Photoshop</div><div class="design-card-title">Photo Compositing &amp; Editing</div><div class="design-card-desc">Advanced compositing work.</div><div class="design-card-tools"><span class="tag">Photoshop</span></div></div>
       </div>
@@ -1556,9 +1551,7 @@
       <div class="design-card" data-cat="poster" onclick="openLightbox('images/poster_look.jpg','Look At Me — Spotlight Poster')">
         <div class="design-badge badge-poster">Poster</div>
         <div class="design-thumb ph-poster">
-         <div class="design-thumb">
-            <img src="images/poster_look.jpg" alt="Event poster with bold typography">
-                </div>
+            <img src="images/poster_look.jpg" alt="Event poster with bold typography" loading="lazy">
         </div>
         <div class="design-overlay"><div class="design-card-cat">Poster / Social Media</div><div class="design-card-title">Event Poster Design</div><div class="design-card-desc">Bold typography and visual hierarchy.</div><div class="design-card-tools"><span class="tag">Photoshop</span></div></div>
       </div>
@@ -1566,9 +1559,7 @@
       <div class="design-card" data-cat="web" onclick="openLightbox('images/3Dletter.jpg','Typography Poster — 3D Lettering')">
         <div class="design-badge badge-web">POSTER</div>
         <div class="design-thumb ph-web">
-          <div class="design-thumb">
-            <img src="images/3Dletter.jpg" alt="3D poster design">
-              </div>
+            <img src="images/3Dletter.jpg" alt="3D poster design" loading="lazy">
         </div>
         <div class="design-overlay"><div class="design-card-cat">3D Poster</div><div class="design-card-title">3D Poster Design</div><div class="design-card-desc">Three-dimensional poster design.</div><div class="design-card-tools"><span class="tag">Photoshop</span></div></div>
       </div>
@@ -1576,9 +1567,7 @@
       <div class="design-card" data-cat="uiux" onclick="openLightbox('images/natures/1.png','Nature App — Wireframe Set')">
         <div class="design-badge badge-uiux">UI/UX</div>
         <div class="design-thumb ph-uiux">
-         <div class="design-thumb">
-          <img src="images/natures/1.png" alt="Wireframe set showing low to high fidelity designs">
-             </div>
+          <img src="images/natures/1.png" alt="Wireframe set showing low to high fidelity designs" loading="lazy">
         </div>
         <div class="design-overlay"><div class="design-card-cat">UI / UX Design</div><div class="design-card-title">Wireframe Set</div><div class="design-card-desc">Lo-fi to hi-fi wireframes.</div><div class="design-card-tools"><span class="tag">Figma</span></div></div>
       </div>
@@ -1586,18 +1575,14 @@
       <div class="design-card" data-cat="poster" onclick="openLightbox('images/chickenArtboard 2.jpg','Social Media Post Series — Branded Graphics')">
         <div class="design-badge badge-poster">Poster</div>
         <div class="design-thumb ph-poster">
-         <div class="design-thumb">
-             <img src="images/chickenArtboard 2.jpg" alt="Social media post series">
-            </div>
+             <img src="images/chickenArtboard 2.jpg" alt="Social media post series" loading="lazy">
         </div>
         <div class="design-overlay"><div class="design-card-cat">Social Media</div><div class="design-card-title">Social Media Post Series</div><div class="design-card-desc">Branded graphics with consistent visual language.</div><div class="design-card-tools"><span class="tag">Photoshop</span></div></div>
       </div>
       <div class="design-card" data-cat="poster" onclick="openLightbox('images/KKR vs Rcb ipl.jpg','Event Poster — KKR vs RCB IPL Match')">
         <div class="design-badge badge-poster">Poster</div>
         <div class="design-thumb ph-poster">
-         <div class="design-thumb">
-            <img src="images/KKR vs Rcb ipl.jpg" alt="Event poster with bold typography">
-                </div>
+            <img src="images/KKR vs Rcb ipl.jpg" alt="Event poster with bold typography" loading="lazy">
         </div>
         <div class="design-overlay"><div class="design-card-cat">Poster / Social Media</div><div class="design-card-title">Event Poster Design</div><div class="design-card-desc">Bold typography and visual hierarchy.</div><div class="design-card-tools"><span class="tag">Photoshop</span></div></div>
       </div> 
