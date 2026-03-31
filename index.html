@@ -886,6 +886,26 @@
     .blog-read-more:hover { text-decoration: underline; }
     .blog-coming-soon { position: absolute; top: 1rem; right: 1rem; font-size: 0.6rem; background: rgba(0,212,255,0.1); color: var(--cyan); border: 1px solid rgba(0,212,255,0.2); padding: 0.15rem 0.5rem; letter-spacing: 0.1em; }
 
+    /* Writing Article Modal */
+    .article-modal { display: none; position: fixed; inset: 0; background: rgba(5,7,10,0.92); z-index: 2200; align-items: center; justify-content: center; padding: 1.2rem; backdrop-filter: blur(8px); }
+    .article-modal.open { display: flex; }
+    .article-modal-card { width: min(860px, 100%); max-height: 90vh; overflow: auto; background: var(--bg2); border: 1px solid rgba(0,212,255,0.35); box-shadow: 0 20px 80px rgba(0,0,0,0.55); padding: 1.4rem; }
+    .article-modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 0.9rem; }
+    .article-modal-kicker { font-size: 0.65rem; letter-spacing: 0.12em; color: var(--cyan); text-transform: uppercase; }
+    .article-modal-title { font-family: 'Syne', sans-serif; font-size: clamp(1.25rem, 2.5vw, 1.7rem); color: var(--white); margin-top: 0.35rem; line-height: 1.35; }
+    .article-modal-meta { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.06em; margin-top: 0.35rem; }
+    .article-modal-actions { display: flex; gap: 0.55rem; align-items: center; }
+    .article-modal-close { border: 1px solid var(--border); background: transparent; color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; padding: 0.35rem 0.65rem; }
+    .article-modal-close:hover { color: var(--cyan); border-color: var(--cyan); }
+    .article-highlight-toggle { border: 1px solid rgba(255,183,0,0.35); background: rgba(255,183,0,0.08); color: var(--amber); font-family: 'JetBrains Mono', monospace; font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.65rem; }
+    .article-highlight-toggle:hover { background: rgba(255,183,0,0.16); }
+    .article-modal-body { border-top: 1px solid var(--border); margin-top: 0.9rem; padding-top: 1rem; }
+    .article-modal-body p { font-size: 0.82rem; color: var(--text); line-height: 1.9; margin-bottom: 0.9rem; }
+    .article-modal-body h4 { font-size: 0.72rem; letter-spacing: 0.11em; color: var(--amber); text-transform: uppercase; margin: 1.2rem 0 0.6rem; }
+    .article-modal-body ul { margin: 0 0 0.9rem 1rem; color: var(--text); font-size: 0.8rem; line-height: 1.75; }
+    .article-keyword { background: linear-gradient(180deg, rgba(255,183,0,0.12), rgba(255,183,0,0.26)); color: var(--white); padding: 0.05rem 0.24rem; border-radius: 2px; border: 1px solid rgba(255,183,0,0.25); }
+    .article-modal-card.article-highlight-off .article-keyword { background: transparent; border-color: transparent; color: inherit; padding: 0; }
+
     /* ====================================================
        CONTACT CSS
        ✏️  Edit: form input padding, submit button color
@@ -972,8 +992,8 @@
       <li><a href="#about">about</a></li>
       <li><a href="#projects">projects</a></li>
       <li><a href="#skills">skills</a></li>
-      <li><a href="#design">design</a></li>
       <li><a href="#achievements">achievements</a></li>
+      <li><a href="#design">design</a></li>
       <li><a href="#blog">blog</a></li>
       <li><a href="#contact">contact</a></li>
     </ul>
@@ -1006,6 +1026,9 @@
         <a class="hero-badge-link" href="https://www.coursera.org/user/ee44a07585b5bf39f2376593bb777296" target="_blank" rel="noopener noreferrer" title="Coursera profile">
           <img src="images/certification/COUR_BIG.png" alt="Data security badge" loading="lazy">
         </a>
+        <div class="hero-badge-link" title="Intel AI Impact badge" aria-label="Intel AI Impact badge">
+          <img src="images/achievements/ai-impact-pledge-badge.png" alt="AI Impact Pledge badge" loading="lazy">
+        </div>
       </div>
     </div>
     <div class="hero-content">
@@ -1434,6 +1457,60 @@
   </section>
 
   <!-- ====================================================
+       SECTION: ACHIEVEMENTS
+       ✏️  To add/update entries: copy one card block, then
+           update title, date, summary, and link
+       ==================================================== -->
+  <section id="achievements">
+    <div class="section-header fade-up">
+      <h2 class="section-title">Achievements &amp; Competitions</h2>
+    </div>
+    <div class="blog-grid">
+
+      <div class="blog-card fade-up" role="link" tabindex="0" onclick="window.open('https://unstop.com/certificate-preview/a5e9a9a0-7149-4853-9e95-8627f2a0d0fb','_blank')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.open('https://unstop.com/certificate-preview/a5e9a9a0-7149-4853-9e95-8627f2a0d0fb','_blank');}">
+        <div class="blog-coming-soon">SKILL</div>
+        <div class="blog-meta"><span class="blog-tag-label">DSA</span><span>2025-2026</span></div>
+        <h3 class="blog-title">Data Structures &amp; Algorithms Mastery</h3>
+        <p class="blog-excerpt">75th rank in Crack DSA Quiz (ACEIT Jaipur). Participated in Game of Codes Season 2 (PES Modern College) and Code Clash (Elan &amp; nVision 2026). Consistent performance across algorithm competitions.</p>
+        <a href="https://unstop.com/certificate-preview/a5e9a9a0-7149-4853-9e95-8627f2a0d0fb" class="blog-read-more" target="_blank">→ View DSA Certificate</a>
+      </div>
+
+      <div class="blog-card fade-up" role="link" tabindex="0" onclick="window.open('https://unstop.com/certificate-preview/bdcf8aa3-45dc-4dcc-a973-04d40f5a3832','_blank')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.open('https://unstop.com/certificate-preview/bdcf8aa3-45dc-4dcc-a973-04d40f5a3832','_blank');}">
+        <div class="blog-coming-soon">COMPETITION</div>
+        <div class="blog-meta"><span class="blog-tag-label">Coding</span><span>Sep 2025</span></div>
+        <h3 class="blog-title">Competitive Programming Excellence</h3>
+        <p class="blog-excerpt">246th rank in Coding Round (CodeClash: The August Arena). Top Performer in Logic League – 4th Week at ARSD College. Demonstrated strong problem-solving across multiple coding competitions.</p>
+        <a href="https://unstop.com/certificate-preview/bdcf8aa3-45dc-4dcc-a973-04d40f5a3832" class="blog-read-more" target="_blank">→ View Coding Certificate</a>
+      </div>
+
+      <div class="blog-card fade-up" role="link" tabindex="0" onclick="window.open('images/achievements/GLOBAL EMPLOYABILITY TEST 2025.pdf','_blank')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.open('images/achievements/GLOBAL EMPLOYABILITY TEST 2025.pdf','_blank');}">
+        <div class="blog-coming-soon">ACHIEVEMENT</div>
+        <div class="blog-meta"><span class="blog-tag-label">Employability</span><span>Sep 2025</span></div>
+        <h3 class="blog-title">Global Employability Test 2025</h3>
+        <p class="blog-excerpt">Scored 90 percentile in the Global Employability Test 2025, demonstrating strong aptitude and job-readiness in competitive assessment benchmarks.</p>
+        <a href="images/achievements/GLOBAL EMPLOYABILITY TEST 2025.pdf" class="blog-read-more" target="_blank" rel="noopener noreferrer">→ View certificate</a>
+      </div>
+
+      <div class="blog-card fade-up" role="link" tabindex="0" onclick="window.open('images/achievements/Immersive _Program_Certificate _Elite_- (503).pdf','_blank')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.open('images/achievements/Immersive _Program_Certificate _Elite_- (503).pdf','_blank');}">
+        <div class="blog-coming-soon">ACHIEVEMENT</div>
+        <div class="blog-meta"><span class="blog-tag-label">Certification</span><span>Aug 2025</span></div>
+        <h3 class="blog-title">Immersive Program Certificate</h3>
+        <p class="blog-excerpt">Completed the Industry Immersion Program (Elite) at Alliance University, reflecting hands-on exposure to practical workflows and industry-oriented learning.</p>
+        <a href="images/achievements/Immersive _Program_Certificate _Elite_- (503).pdf" class="blog-read-more" target="_blank" rel="noopener noreferrer">→ View certificate</a>
+      </div>
+
+      <div class="blog-card fade-up" role="link" tabindex="0" onclick="window.open('images/achievements/conferences paper.pdf','_blank')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.open('images/achievements/conferences paper.pdf','_blank');}">
+        <div class="blog-coming-soon">ACHIEVEMENT</div>
+        <div class="blog-meta"><span class="blog-tag-label">Research</span><span>Feb 2025</span></div>
+        <h3 class="blog-title">ICICC-2025 Research Publication</h3>
+        <p class="blog-excerpt">Presented published research work at ICICC-2025 hosted by University of Delhi in collaboration with NIT Patna and University of Valladolid, Spain.</p>
+        <a href="images/achievements/conferences paper.pdf" class="blog-read-more">→ View write-up</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====================================================
        SECTION: DESIGN
        ✏️  To add your real image, replace:
              <div class="design-thumb-placeholder">...</div>
@@ -1446,7 +1523,7 @@
        ==================================================== -->
   <section id="design">
     <div class="section-header fade-up">
-      <h2 class="section-title">Creative Work</h2>
+      <h2 class="section-title">Design Portfolio</h2>
     </div>
     <div class="design-filter-bar fade-up">
       <button class="filter-btn active" onclick="filterDesign('all',this)">all_work()</button>
@@ -1530,44 +1607,6 @@
     </div>
   </section>
 
-  <!-- ====================================================
-       SECTION: ACHIEVEMENTS
-       ✏️  To add/update entries: copy one card block, then
-           update title, date, summary, and link
-       ==================================================== -->
-  <section id="achievements">
-    <div class="section-header fade-up">
-      <h2 class="section-title">Achievements &amp; Competitions </span></h2>
-    </div>
-    <div class="blog-grid">
-
-      <div class="blog-card fade-up">
-        <div class="blog-coming-soon">ACHIEVEMENT</div>
-        <div class="blog-meta"><span class="blog-tag-label">Research</span><span>Feb 2025</span></div>
-        <h3 class="blog-title">ICICC-2025 Research Publication</h3>
-        <p class="blog-excerpt">Presented published research work at ICICC-2025 hosted by University of Delhi in collaboration with NIT Patna and University of Valladolid, Spain.</p>
-        <a href="#blog" class="blog-read-more">→ View write-up</a>
-      </div>
-
-      <div class="blog-card fade-up">
-        <div class="blog-coming-soon">COMPETITION</div>
-        <div class="blog-meta"><span class="blog-tag-label">Coding</span><span>Update Date</span></div>
-        <h3 class="blog-title">Add Your Hackathon / Competition Name</h3>
-        <p class="blog-excerpt">Replace this with your rank, finalist status, or milestone and a one-line summary of what you built or solved.</p>
-        <a href="#" class="blog-read-more">→ Add result link</a>
-      </div>
-
-      <div class="blog-card fade-up">
-        <div class="blog-coming-soon">ACHIEVEMENT</div>
-        <div class="blog-meta"><span class="blog-tag-label">Career</span><span>Update Date</span></div>
-        <h3 class="blog-title">Add Your Next Milestone</h3>
-        <p class="blog-excerpt">Use this card for scholarship, internship selection, top performer status, or notable leadership outcome.</p>
-        <a href="#" class="blog-read-more">→ Add proof link</a>
-      </div>
-
-    </div>
-  </section>
-
   <!-- Lightbox (design image popup) -->
   <div class="lightbox" id="lightbox" onclick="closeLightbox()">
     <div class="lightbox-inner" onclick="event.stopPropagation()">
@@ -1594,27 +1633,45 @@
         <div class="blog-meta"><span class="blog-tag-label">Cloud</span><span>Feb 2025</span></div>
         <h3 class="blog-title">Alumni Horizons: Reconnecting the Past and Future</h3>
         <p class="blog-excerpt">Published at ICICC-2025, University of Delhi in collaboration with NIT Patna and University of Valladolid, Spain.</p>
-        <a href="#" class="blog-read-more">→ Read publication</a>
+        <a href="#" class="blog-read-more" onclick="openArticleModal('alumni', event)">→ Read publication</a>
       </div>
 
       <div class="blog-card fade-up">
-        <div class="blog-coming-soon">COMING SOON</div>
+        <div class="blog-coming-soon">LIVE</div>
         <div class="blog-meta"><span class="blog-tag-label">AI / Dev</span><span>Mar 2026</span></div>
         <h3 class="blog-title">How I Built TweetForge AI: From Claude → Gemini → Groq</h3>
-        <p class="blog-excerpt">Switching LLM APIs, enforcing JSON schema in prompts, deploying a React + AI app in 72 hours.</p>
-        <a href="#" class="blog-read-more">→ Coming soon</a>
+        <p class="blog-excerpt">How I turned manual brand content writing into a 10-second AI workflow using a two-stage Groq pipeline, strict JSON prompts, secure key handling, and production guardrails.</p>
+        <a href="#" class="blog-read-more" onclick="openArticleModal('tweetforge', event)">→ Read insights</a>
       </div>
 
       <div class="blog-card fade-up">
-        <div class="blog-coming-soon">COMING SOON</div>
-        <div class="blog-meta"><span class="blog-tag-label">Cloud</span><span>Soon</span></div>
-        <h3 class="blog-title">OCI DevOps Professional — My Study Guide &amp; Notes</h3>
-        <p class="blog-excerpt">Resources, labs, and concepts that actually show up in the OCI DevOps Professional exam.</p>
-        <a href="#" class="blog-read-more">→ Coming soon</a>
+        <div class="blog-coming-soon">LIVE</div>
+        <div class="blog-meta"><span class="blog-tag-label">Web / UX</span><span>Apr 2026</span></div>
+        <h3 class="blog-title">How I Built My Portfolio Website: Structure, UX, and Maintainability</h3>
+        <p class="blog-excerpt">A practical walkthrough of planning sections first, building modular HTML/CSS components, designing mobile-first layouts, and keeping the site easy to extend as projects grow.</p>
+        <a href="#" class="blog-read-more" onclick="openArticleModal('portfolio', event)">→ Read insights</a>
       </div>
 
     </div>
   </section>
+
+  <!-- Writing Article Modal -->
+  <div class="article-modal" id="articleModal" onclick="closeArticleModal()">
+    <div class="article-modal-card" onclick="event.stopPropagation()">
+      <div class="article-modal-head">
+        <div>
+          <div class="article-modal-kicker" id="articleModalKicker">Writing</div>
+          <h3 class="article-modal-title" id="articleModalTitle"></h3>
+          <div class="article-modal-meta" id="articleModalMeta"></div>
+        </div>
+        <div class="article-modal-actions">
+          <button class="article-highlight-toggle" id="articleHighlightToggle" onclick="toggleArticleHighlights()">highlights: on</button>
+          <button class="article-modal-close" onclick="closeArticleModal()">[ ESC ] close</button>
+        </div>
+      </div>
+      <div class="article-modal-body" id="articleModalBody"></div>
+    </div>
+  </div>
 
   <!-- ====================================================
        SECTION: CONTACT
@@ -1889,6 +1946,94 @@
       });
     });
 
+    /* ── WRITING ARTICLE MODAL ── */
+    const articleDetails = {
+      alumni: {
+        kicker: 'Research Publication',
+        title: 'Alumni Horizons: Reconnecting the Past and Future',
+        meta: 'Cloud | Feb 2025',
+        body: `
+          <p>This paper was presented at ICICC-2025 at Shaheed Sukhdev College of Business Studies, University of Delhi, in collaboration with NIT Patna and the University of Valladolid, Spain.</p>
+          <h4>What I Learned</h4>
+          <ul>
+            <li>How to structure research into a clear <span class="article-keyword">problem-method-result narrative</span>.</li>
+            <li>How <span class="article-keyword">teamwork and review cycles</span> improve the quality of technical writing.</li>
+            <li>How <span class="article-keyword">publication discipline</span> improves product thinking in software projects.</li>
+          </ul>
+        `
+      },
+      tweetforge: {
+        kicker: 'AI / Dev',
+        title: 'How I Built TweetForge AI: From Claude to Gemini to Groq',
+        meta: 'Mar 2026 | Project Learnings',
+        body: `
+          <p>TweetForge AI started from one <span class="article-keyword">workflow bottleneck</span>: writing on-brand tweet sets manually takes too long. I designed the app to turn that process into a fast, repeatable <span class="article-keyword">AI pipeline</span>.</p>
+          <h4>Key Learnings</h4>
+          <ul>
+            <li><strong>Start from bottlenecks:</strong> I focused on reducing manual content drafting time first, then selected AI tooling around that goal.</li>
+            <li><strong>Tool auditing matters:</strong> I tested Claude, Gemini, and <span class="article-keyword">Groq</span> for speed, output consistency, quotas, and cost.</li>
+            <li><strong>Prompt architecture is the core:</strong> The main quality gains came from strong prompt structure, clear constraints, and strict <span class="article-keyword">JSON schema</span> instructions.</li>
+            <li><strong>Two-stage pipelines improve quality:</strong> In social-post analysis mode, one call extracts <span class="article-keyword">voice profile</span> and a second call generates tweets from that profile.</li>
+            <li><strong>Reliability needs guardrails:</strong> I handled markdown noise, parsing edge cases, and API failures with cleanup logic and clear user error messaging.</li>
+            <li><strong>Production mindset is essential:</strong> API keys were secured via <span class="article-keyword">environment variables</span> and deployment secrets, with fallback planning for vendor limits.</li>
+          </ul>
+          <p>The biggest takeaway: successful AI products are not only about the model. They depend on <span class="article-keyword">workflow understanding</span>, <span class="article-keyword">tool selection</span>, <span class="article-keyword">prompt design</span>, and robust UX behavior.</p>
+        `
+      },
+      portfolio: {
+        kicker: 'Web / UX',
+        title: 'How I Built My Portfolio Website: Structure, UX, and Maintainability',
+        meta: 'Apr 2026 | Build Notes',
+        body: `
+          <p>I built my portfolio as a product, not just a page. The objective was to make my work easy to scan, visually consistent, and simple to update as my projects grow.</p>
+          <h4>Build Decisions</h4>
+          <ul>
+            <li><strong>Content-first planning:</strong> I finalized sections first (Hero, Projects, Skills, Achievements, Writing, Contact) before styling details.</li>
+            <li><strong>Modular structure:</strong> I separated sections and styles to keep updates focused and <span class="article-keyword">maintainable</span> over time.</li>
+            <li><strong>Responsive by default:</strong> Layouts, spacing, and typography were tuned for both desktop and mobile reading.</li>
+            <li><strong>Lightweight interactions:</strong> I used subtle motion and transitions for clarity without hurting performance.</li>
+            <li><strong>Scalable updates:</strong> The structure allows quick addition of new projects, certifications, and writing entries.</li>
+          </ul>
+          <p>This project strengthened my frontend system thinking: <span class="article-keyword">architecture</span>, <span class="article-keyword">visual hierarchy</span>, and <span class="article-keyword">maintainability</span> all matter when presenting technical work.</p>
+        `
+      }
+    };
+
+    let articleHighlightEnabled = true;
+
+    function updateArticleHighlightState(enabled) {
+      const card = document.querySelector('#articleModal .article-modal-card');
+      const toggle = document.getElementById('articleHighlightToggle');
+      if (!card || !toggle) return;
+
+      card.classList.toggle('article-highlight-off', !enabled);
+      toggle.textContent = enabled ? 'highlights: on' : 'highlights: off';
+      articleHighlightEnabled = enabled;
+    }
+
+    function toggleArticleHighlights() {
+      updateArticleHighlightState(!articleHighlightEnabled);
+    }
+
+    function openArticleModal(articleId, event) {
+      if (event) event.preventDefault();
+      const data = articleDetails[articleId];
+      if (!data) return;
+
+      document.getElementById('articleModalKicker').textContent = data.kicker;
+      document.getElementById('articleModalTitle').textContent = data.title;
+      document.getElementById('articleModalMeta').textContent = data.meta;
+      document.getElementById('articleModalBody').innerHTML = data.body;
+      document.getElementById('articleModal').classList.add('open');
+      updateArticleHighlightState(true);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeArticleModal() {
+      document.getElementById('articleModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
     /* ── TYPING HERO EFFECT ──
        ✏️  Edit this array to change the rotating roles */
     const roles = [
@@ -2092,6 +2237,7 @@
       if (e.key === 'Escape') {
         closeLightbox();
         closeProjectModal();
+        closeArticleModal();
       }
     });
 
