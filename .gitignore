@@ -10,6 +10,8 @@ venv/
 # Python cache
 __pycache__/
 *.pyc
+*.sqlite3
+db.sqlite3
 
 # OS/editor files
 .DS_Store
