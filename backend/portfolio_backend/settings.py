@@ -133,13 +133,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = config(
     'CORS_ALLOWED_ORIGINS',
-    default='http://127.0.0.1:5500,http://localhost:5500',
+    default='http://127.0.0.1:5500,http://localhost:5500,https://valmeeki.netlify.app,https://celadon-cajeta-d8bbc9.netlify.app',
     cast=Csv(),
 )
 
 CSRF_TRUSTED_ORIGINS = config(
     'CSRF_TRUSTED_ORIGINS',
-    default='http://127.0.0.1:5500,http://localhost:5500',
+    default='http://127.0.0.1:5500,http://localhost:5500,https://valmeeki.netlify.app,https://celadon-cajeta-d8bbc9.netlify.app',
     cast=Csv(),
 )
 
