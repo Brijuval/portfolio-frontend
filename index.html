@@ -1701,8 +1701,8 @@
               <div class="form-group"><label class="form-label">email</label><input type="email" class="form-input" placeholder="your@email.com" id="femail"/></div>
               <div class="form-group"><label class="form-label">subject</label><input type="text" class="form-input" placeholder="reason_for_contact" id="fsubject"/></div>
               <div class="form-group"><label class="form-label">message</label><textarea class="form-textarea" placeholder="your message here..." id="fmessage"></textarea></div>
-              <button class="form-submit" onclick="handleSubmit()">./send_message.sh</button>
-              <div id="formMsg" style="font-size:0.75rem;color:var(--green);display:none;">✓ Message sent! I'll reply within 24hrs.</div>
+              <button class="form-submit" id="contactSubmitBtn" onclick="handleSubmit()">./send_message.sh</button>
+              <div id="formMsg" role="status" aria-live="polite" style="font-size:0.75rem;color:var(--muted);display:none;"></div>
             </div>
           </div>
         </div>
@@ -2106,13 +2106,12 @@
     typeRole();
 
 
-    /* ── CONTACT FORM ──
-       Currently shows a success message (no backend needed).
-       ✏️  To connect Django backend:
-         1. Delete "Option B" block below
-         2. Uncomment "Option A" block
-         3. Change the URL to your Django server address */
+    /* ── CONTACT FORM ── */
+    let formMessageTimer = null;
+
     async function handleSubmit() {
+      const submitBtn = document.getElementById('contactSubmitBtn');
+      const originalBtnText = submitBtn.textContent;
       const payload = {
         name:    document.getElementById('fname').value,
         email:   document.getElementById('femail').value,
@@ -2120,33 +2119,82 @@
         message: document.getElementById('fmessage').value,
       };
       if (!payload.name || !payload.email || !payload.message) {
-        alert('Please fill in name, email and message.');
+        showFormMessage('Please fill in name, email and message.', 'error', 8000);
         return;
       }
 
-      /* -- Option A: Django backend (uncomment when ready) --
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.7';
+      submitBtn.style.cursor = 'not-allowed';
+      submitBtn.textContent = './sending...';
+      showFormMessage('Sending your message...', 'info');
+
       try {
         const res = await fetch('http://127.0.0.1:8000/api/contact/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
         });
-        if (res.ok) { showSuccess(); }
-        else { alert('Something went wrong. Please email me directly.'); }
-      } catch(e) { alert('Could not reach server. Please email me directly.'); }
-      */
 
-      /* -- Option B: No backend yet — just show success (delete this when Django is ready) -- */
-      showSuccess();
+        if (res.ok) {
+          showSuccess();
+          return;
+        }
+
+        let errorMessage = 'Something went wrong. Please email me directly.';
+        try {
+          const data = await res.json();
+          if (data && data.error) errorMessage = data.error;
+        } catch (_) {
+          // Keep default fallback message when non-JSON error response is returned.
+        }
+        showFormMessage(errorMessage, 'error', 8000);
+      } catch (e) {
+        showFormMessage('Could not reach server. Please email me directly.', 'error', 8000);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '';
+        submitBtn.style.cursor = '';
+        submitBtn.textContent = originalBtnText;
+      }
+    }
+
+    function showFormMessage(message, type = 'info', autoHideMs = 0) {
+      const msgEl = document.getElementById('formMsg');
+      const colorMap = {
+        info: 'var(--cyan)',
+        success: 'var(--green)',
+        error: 'var(--amber)',
+      };
+      const iconMap = {
+        info: '⌛',
+        success: '✓',
+        error: '⚠',
+      };
+
+      if (formMessageTimer) {
+        clearTimeout(formMessageTimer);
+        formMessageTimer = null;
+      }
+
+      msgEl.textContent = `${iconMap[type] || iconMap.info} ${message}`;
+      msgEl.style.display = 'block';
+      msgEl.style.color = colorMap[type] || colorMap.info;
+
+      if (autoHideMs > 0) {
+        formMessageTimer = setTimeout(() => {
+          msgEl.style.display = 'none';
+          formMessageTimer = null;
+        }, autoHideMs);
+      }
     }
 
     function showSuccess() {
-      document.getElementById('formMsg').style.display = 'block';
+      showFormMessage('Message sent! I\'ll reply within 24hrs.', 'success', 4000);
       document.getElementById('fname').value    = '';
       document.getElementById('femail').value   = '';
       document.getElementById('fsubject').value = '';
       document.getElementById('fmessage').value = '';
-      setTimeout(() => { document.getElementById('formMsg').style.display = 'none'; }, 4000);
     }
 
 
