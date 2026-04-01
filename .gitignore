@@ -17,3 +17,7 @@ db.sqlite3
 .DS_Store
 Thumbs.db
 .vscode/
+
+# Local personal documents (do not commit)
+images/valmeeki_singh_A.pdf
+images/achievements/conference_paper_final-CCIT.docx
