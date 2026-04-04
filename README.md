@@ -13,7 +13,7 @@ portfolio-components/
 ├── css/                         ← one CSS file per section
 │   ├── globals.css              → colors, fonts, shared base styles
 │   ├── navbar.css               → navigation bar
-│   ├── hero.css                 → hero / landing section
+│   ├── hero.css                 → hero/landing section
 │   ├── about.css                → about me section
 │   ├── projects.css             → project cards
 │   ├── skills.css               → skill bars + certifications
@@ -45,7 +45,6 @@ portfolio-components/
 --cyan:   #00d4ff;   /* secondary accent */
 --amber:  #ffb700;   /* certifications */
 ```
-
 ### Update your name/title
 → Open `sections/hero.html`
 - Line with `Valmeeki` → change name
@@ -131,11 +130,11 @@ then copy the updated HTML/CSS/JS into the main `index.html`.
 3. Copy the entire updated `<section>...</section>` block
 4. Open your main `index.html`
 5. Find the matching section and replace it
-6. Save and refresh browser
+6. Save and refresh the browser
 
 **OR** — once you set up Django, you can use Django's
 template system to `{% include 'sections/projects.html' %}`
-and the files will be loaded automatically!
+And the files will be loaded automatically!
 
 ---
 
@@ -168,6 +167,5 @@ Your `index.html` in Django becomes:
   {% include 'portfolio/sections/contact.html' %}
 {% endblock %}
 ```
-
 Each section becomes a real standalone template file.
 That is the professional way to structure a Django portfolio!
