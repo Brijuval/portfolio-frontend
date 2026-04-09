@@ -167,5 +167,8 @@ Your `index.html` in Django becomes:
   {% include 'portfolio/sections/contact.html' %}
 {% endblock %}
 ```
+Portfolio Link:https://valmeeki.netlify.app/
+
+
 Each section becomes a real standalone template file.
 That is the professional way to structure a Django portfolio!
