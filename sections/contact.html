@@ -42,6 +42,20 @@
         <div class="contact-item-icon">⌥</div>
         github.com/Brijuval
       </a>
+
+      <div class="feedback-panel">
+        <div class="feedback-title">quick_feedback()</div>
+        <p class="feedback-text">Seen my portfolio? Share what looks good and what should be improved.</p>
+        <div class="feedback-options">
+          <button type="button" class="feedback-chip active" data-feedback-type="general" onclick="setFeedbackType('general', this)">general</button>
+          <button type="button" class="feedback-chip" data-feedback-type="good" onclick="setFeedbackType('good', this)">good</button>
+          <button type="button" class="feedback-chip" data-feedback-type="improve" onclick="setFeedbackType('improve', this)">needs improvement</button>
+          <button type="button" class="feedback-chip" data-feedback-type="bug" onclick="setFeedbackType('bug', this)">found bug</button>
+        </div>
+        <textarea class="form-textarea feedback-note" id="feedbackNote" placeholder="Tell me what to change, remove, or improve..."></textarea>
+        <button class="form-submit feedback-submit" id="feedbackSubmitBtn" onclick="submitQuickFeedback()">./submit_feedback.sh</button>
+        <div id="quickFeedbackMsg" class="form-status" role="status" aria-live="polite" hidden></div>
+      </div>
     </div><!-- /left -->
 
     <!-- ══ RIGHT — Contact form (terminal styled) ══ -->
@@ -78,12 +92,10 @@
             </div>
 
             <!-- Submit button — calls handleSubmit() in main.js -->
-            <button class="form-submit" onclick="handleSubmit()">./send_message.sh</button>
+            <button class="form-submit" id="contactSubmitBtn" onclick="handleSubmit()">./send_message.sh</button>
 
             <!-- Success message (hidden by default, shown after submit) -->
-            <div id="formMsg" style="font-size:0.75rem;color:var(--green);display:none;">
-              ✓ Message sent! I'll reply within 24hrs.
-            </div>
+            <div id="formMsg" class="form-status" role="status" aria-live="polite" hidden></div>
 
           </div><!-- /contactForm -->
         </div>

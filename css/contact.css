@@ -104,20 +104,23 @@
   box-shadow: 0 0 30px rgba(0,255,136,0.25);
   transform: translateY(-1px);
 }
-
-/* Footer */
-footer {
-  padding: 2rem 3rem;
-  border-top: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.72rem;
-  color: var(--muted);
+.form-submit:disabled {
+  opacity: 0.65;
+  cursor: wait;
+  transform: none;
+  box-shadow: none;
 }
-footer span { color: var(--green); }
+
+.form-status {
+  min-height: 1.1rem;
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+.form-status.is-success { color: var(--green); }
+.form-status.is-error { color: var(--amber); }
 
 @media (max-width: 900px) {
   .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .form-submit { width: 100%; align-self: stretch; text-align: center; }
   footer { flex-direction: column; gap: 0.5rem; text-align: center; }
 }

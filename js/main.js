@@ -84,24 +84,27 @@ document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
 // ✏️  Edit this array to change the rotating roles in the hero
 const roles = [
-  'Software Developer',
-  'Cloud Engineer',
+  'Cloud-native Developer',
   'Full-Stack Builder',
-  'AI App Developer',
-  'UI / UX Designer',       // ← added since you do design work too!
+  'AI Workflow Engineer',
+  'UI / UX-aware Developer',
+  'Software Developer',
 ];
 
 let roleIndex    = 0;
 let charIndex    = 0;
 let isDeleting   = false;
 const roleEl     = document.querySelector('.hero-role');
+const roleTextNode = roleEl ? roleEl.firstChild : null;
 
 function typeRole() {
+  if (!roleEl || !roleTextNode) return;
+
   const currentRole = roles[roleIndex];
 
   if (!isDeleting) {
     // Typing forward
-    roleEl.childNodes[0].textContent = currentRole.slice(0, ++charIndex);
+    roleTextNode.textContent = currentRole.slice(0, ++charIndex);
     if (charIndex === currentRole.length) {
       // Pause at end before deleting
       isDeleting = true;
@@ -110,7 +113,7 @@ function typeRole() {
     }
   } else {
     // Deleting
-    roleEl.childNodes[0].textContent = currentRole.slice(0, --charIndex);
+    roleTextNode.textContent = currentRole.slice(0, --charIndex);
     if (charIndex === 0) {
       isDeleting = false;
       roleIndex  = (roleIndex + 1) % roles.length;
@@ -120,7 +123,9 @@ function typeRole() {
   setTimeout(typeRole, isDeleting ? 60 : 100);
 }
 
-typeRole();
+if (roleEl && roleTextNode) {
+  typeRole();
+}
 
 
 /* ── 4. CONTACT FORM SUBMIT ────────────────────────────────── */

@@ -49,14 +49,26 @@
 }
 
 .blog-read-more {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 1rem;
   font-size: 0.72rem;
   color: var(--cyan);
   text-decoration: none;
   letter-spacing: 0.05em;
+  border: 1px solid rgba(0,212,255,0.45);
+  border-radius: 2px;
+  padding: 0.35rem 0.6rem;
+  background: rgba(0,212,255,0.05);
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s, transform 0.2s;
 }
-.blog-read-more:hover { text-decoration: underline; }
+.blog-read-more:hover {
+  border-color: var(--cyan);
+  background: rgba(0,212,255,0.14);
+  box-shadow: 0 0 0 1px rgba(0,212,255,0.12) inset;
+  transform: translateY(-1px);
+}
 
 /* "LIVE" / "COMING SOON" badge — top right of card */
 .blog-coming-soon {

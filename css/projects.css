@@ -67,16 +67,35 @@
 }
 
 /* GitHub / Live Demo links */
-.project-links { display: flex; gap: 1rem; }
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 1.1rem;
+  row-gap: 0.45rem;
+}
 .project-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
   font-size: 0.72rem;
   color: var(--green);
   text-decoration: none;
   letter-spacing: 0.05em;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s;
+  border: 1px solid rgba(0,255,136,0.45);
+  border-radius: 2px;
+  padding: 0.35rem 0.6rem;
+  background: rgba(0,255,136,0.04);
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s, transform 0.2s;
 }
-.project-link:hover { border-bottom-color: var(--green); }
+.project-link:hover {
+  border-color: var(--green);
+  background: rgba(0,255,136,0.12);
+  box-shadow: 0 0 0 1px rgba(0,255,136,0.1) inset;
+  transform: translateY(-1px);
+}
 
 /* "FEATURED" amber badge (top-right of card) */
 .project-featured {

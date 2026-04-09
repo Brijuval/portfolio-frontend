@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Valmeeki Singh — Portfolio</title>
+  <meta name="description" content="Valmeeki Singh is a cloud computing and full-stack developer building AI-powered web apps, Azure dashboards, and production-ready portfolio projects." />
+  <meta name="theme-color" content="#0a0c0f" />
+  <meta property="og:title" content="Valmeeki Singh | Cloud & Full-Stack Developer" />
+  <meta property="og:description" content="Cloud computing student building AI-powered web apps, Azure dashboards, and polished full-stack experiences." />
+  <meta property="og:type" content="website" />
+  <title>Valmeeki Singh | Cloud & Full-Stack Developer</title>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 
   <style>
@@ -533,9 +538,9 @@
     .project-title { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 0.75rem; }
     .project-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
     .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
-    .project-links { display: flex; gap: 1rem; }
-    .project-link { font-size: 0.72rem; color: var(--green); text-decoration: none; letter-spacing: 0.05em; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
-    .project-link:hover { border-bottom-color: var(--green); }
+    .project-links { display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: center; column-gap: 1.1rem; row-gap: 0.45rem; }
+    .project-link { display: inline-flex; align-items: center; justify-content: center; white-space: nowrap; font-size: 0.72rem; color: var(--green); text-decoration: none; letter-spacing: 0.05em; border: 1px solid rgba(0,255,136,0.45); border-radius: 2px; padding: 0.35rem 0.6rem; background: rgba(0,255,136,0.04); transition: border-color 0.2s, background 0.2s, box-shadow 0.2s, transform 0.2s; }
+    .project-link:hover { border-color: var(--green); background: rgba(0,255,136,0.12); box-shadow: 0 0 0 1px rgba(0,255,136,0.1) inset; transform: translateY(-1px); }
     .project-featured { position: absolute; top: 1rem; right: 1rem; font-size: 0.6rem; color: var(--amber); border: 1px solid rgba(255,183,0,0.3); padding: 0.15rem 0.5rem; letter-spacing: 0.1em; }
     
     /* Project Image/Thumbnail */
@@ -882,9 +887,35 @@
     .blog-tag-label { color: var(--cyan); }
     .blog-title { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 0.75rem; line-height: 1.4; }
     .blog-excerpt { font-size: 0.78rem; color: var(--muted); line-height: 1.7; }
-    .blog-read-more { display: inline-block; margin-top: 1rem; font-size: 0.72rem; color: var(--cyan); text-decoration: none; letter-spacing: 0.05em; }
-    .blog-read-more:hover { text-decoration: underline; }
+    .blog-read-more { display: inline-flex; align-items: center; justify-content: center; margin-top: 1rem; font-size: 0.72rem; color: var(--cyan); text-decoration: none; letter-spacing: 0.05em; border: 1px solid rgba(0,212,255,0.45); border-radius: 2px; padding: 0.35rem 0.6rem; background: rgba(0,212,255,0.05); transition: border-color 0.2s, background 0.2s, box-shadow 0.2s, transform 0.2s; }
+    .blog-read-more:hover { border-color: var(--cyan); background: rgba(0,212,255,0.14); box-shadow: 0 0 0 1px rgba(0,212,255,0.12) inset; transform: translateY(-1px); }
     .blog-coming-soon { position: absolute; top: 1rem; right: 1rem; font-size: 0.6rem; background: rgba(0,212,255,0.1); color: var(--cyan); border: 1px solid rgba(0,212,255,0.2); padding: 0.15rem 0.5rem; letter-spacing: 0.1em; }
+
+    .pmec-card .blog-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding-right: 5rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .pmec-card .blog-meta span:last-child {
+      line-height: 1.35;
+    }
+
+    .pmec-card .blog-title {
+      max-width: 26rem;
+    }
+
+    @media (max-width: 520px) {
+      .pmec-card .blog-meta {
+        padding-right: 4.25rem;
+      }
+
+      .pmec-card .blog-title {
+        max-width: none;
+      }
+    }
 
     /* Writing Article Modal */
     .article-modal { display: none; position: fixed; inset: 0; background: rgba(5,7,10,0.92); z-index: 2200; align-items: center; justify-content: center; padding: 1.2rem; backdrop-filter: blur(8px); }
@@ -916,6 +947,15 @@
     .contact-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.8rem; color: var(--text); margin-bottom: 0.75rem; text-decoration: none; transition: color 0.2s; }
     .contact-item:hover { color: var(--green); }
     .contact-item-icon { width: 30px; height: 30px; background: var(--bg3); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0; }
+    .feedback-panel { margin-top: 1.3rem; border: 1px solid var(--border); background: rgba(0,255,136,0.03); padding: 0.95rem; }
+    .feedback-title { font-size: 0.66rem; letter-spacing: 0.11em; color: var(--cyan); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .feedback-text { font-size: 0.74rem; color: var(--muted); line-height: 1.7; margin-bottom: 0.7rem; }
+    .feedback-options { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 0.7rem; }
+    .feedback-chip { border: 1px solid var(--border); background: var(--bg); color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.05em; padding: 0.32rem 0.55rem; border-radius: 2px; transition: border-color 0.2s, background 0.2s, color 0.2s; }
+    .feedback-chip:hover { border-color: var(--cyan); color: var(--cyan); }
+    .feedback-chip.active { border-color: var(--cyan); background: rgba(0,212,255,0.12); color: var(--cyan); }
+    .feedback-note { min-height: 92px; margin-bottom: 0.7rem; }
+    .feedback-submit { width: 100%; text-align: center; }
     .contact-form { display: flex; flex-direction: column; gap: 1rem; }
     .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
     .form-label { font-size: 0.68rem; color: var(--green); letter-spacing: 0.1em; text-transform: uppercase; }
@@ -925,6 +965,10 @@
     .form-textarea { resize: vertical; min-height: 120px; }
     .form-submit { background: var(--green); color: #0a0c0f; border: none; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; padding: 0.85rem 2rem; border-radius: 2px; transition: all 0.2s; align-self: flex-start; }
     .form-submit:hover { background: var(--green2); box-shadow: 0 0 30px rgba(0,255,136,0.25); transform: translateY(-1px); }
+    .form-submit:disabled { opacity: 0.65; cursor: wait; transform: none; box-shadow: none; }
+    .form-status { min-height: 1.1rem; font-size: 0.75rem; line-height: 1.6; }
+    .form-status.is-success { color: var(--green); }
+    .form-status.is-error { color: var(--amber); }
 
 
     /* Footer */
@@ -966,6 +1010,12 @@
       .hero-badges-label { margin-bottom: 0.15rem; }
       .hero-badge-link { width: 58px; height: 58px; }
       .hero-badge-link img { max-width: 46px; max-height: 46px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card { padding: 1.3rem; }
+      .project-links { flex-wrap: wrap; gap: 0.65rem; }
+      .contact-layout { gap: 1.5rem; }
+      .contact-item { font-size: 0.76rem; }
+      .form-submit { width: 100%; align-self: stretch; text-align: center; }
       .cert-head { grid-template-columns: 1fr; gap: 0.7rem; }
       .cert-actions { justify-self: start; gap: 0.4rem; }
       .cert-category-badge { width: 64px; height: 48px; }
@@ -998,7 +1048,7 @@
       <li><a href="#contact">contact</a></li>
     </ul>
     <div class="nav-right">
-  <a href="images/valmeeki_singh_A.pdf" download="Valmeeki_Singh_Resume.pdf" class="nav-resume-btn">
+  <a href="images/Valmeeki_singh_A1.pdf" download="Valmeeki_Singh_Resume.pdf" class="nav-resume-btn">
     ↓ Resume
   </a>
   <div class="nav-status">
@@ -1032,19 +1082,19 @@
       </div>
     </div>
     <div class="hero-content">
-      <div class="hero-tag">Final Year B.Tech — Cloud &amp; Full-Stack</div>
+      <div class="hero-tag">Cloud Computing • Full-Stack • AI</div>
       <h1 class="hero-name">Valmeeki<br><span class="accent">Singh</span></h1>
       <p class="hero-role">Software Developer<span class="blink"></span></p>
       <p class="hero-desc">
-        I build <span>scalable cloud and full-stack applications</span> with
-        practical AI integration for real-world use cases.
-        Full-stack developer with Azure &amp; OCI expertise, seeking
-        entry-level Software Developer or Cloud Engineer roles in Bengaluru.
+        I build <span>cloud-native web apps, dashboards, and AI-assisted tools</span>
+        with a focus on clarity, performance, and practical outcomes.
+        Full-stack developer with Azure &amp; OCI experience, currently open to
+        entry-level Software Developer and Cloud Engineer roles in Bengaluru.
       </p>
       <div class="hero-btns">
-      <a href="#projects" class="btn btn-primary">./view_projects</a>
+      <a href="#projects" class="btn btn-primary">./view_work</a>
       <a href="#contact"  class="btn btn-ghost">get_in_touch()</a>
-      <a href="images/valmeeki_singh_A.pdf" download="Valmeeki_Singh_Resume.pdf" class="btn btn-resume">
+      <a href="images/Valmeeki_singh_A1.pdf" download="Valmeeki_Singh_Resume.pdf" class="btn btn-resume">
     ↓    Download Resume
        </a>
       </div>
@@ -1163,15 +1213,34 @@
     <div class="projects-grid">
 
       <!-- PROJECT 1 -->
+      <div class="project-card fade-up" data-project-id="pmecx">
+        <div class="project-image-wrapper">
+          <img src="images/projects/tchacc.png" alt="PMEC-X Cloud Scheduler" onerror="this.style.display='none'; const ph=this.nextElementSibling; if (ph) ph.style.display='flex';">
+          <div class="project-image-placeholder" aria-hidden="true">⚡</div>
+        </div>
+        <div class="project-num">01 / PROJECT</div>
+        <h3 class="project-title">Task Consolidation Algorithm for Heterogeneous Cloud Computing</h3>
+        <p class="project-desc">PMEC-X conference project for heterogeneous cloud scheduling. The paper is prepared but not yet published, and the current author team is Varun V, Valmeeki Singh, Santhosh G, and Abdul Wahab with Ms. Devika P as mentor.</p>
+        <div class="project-tags">
+          <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">PMEC-X</span><span class="tag">Cloud Scheduling</span><span class="tag">Energy Optimization</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/Brijuval/Task-consolidation-Algorithm-for-Heterogeneous-Cloud-Computing" class="project-link" target="_blank" rel="noopener noreferrer">→ GitHub</a>
+          <!-- <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">→ Conference Manuscript</a>
+          <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">→ Live Demo</a> -->
+        </div>
+      </div>
+
+      <!-- PROJECT 1 -->
       <div class="project-card fade-up" data-project-id="tweetforge">
         
         <div class="project-image-wrapper">
           <img src="images/projects/tweetai.png" alt="TweetForge AI" onerror="this.style.display='none'; const ph=this.nextElementSibling; if (ph) ph.style.display='flex';">
           <div class="project-image-placeholder" aria-hidden="true">🚀</div>
         </div>
-        <div class="project-num">01 / PROJECT</div>
+        <div class="project-num">02 / PROJECT</div>
         <h3 class="project-title">TweetForge AI</h3>
-        <p class="project-desc">AI-powered brand tweet generator built with React, Groq API, and LLaMA 3.3 70B. Delivers structured multi-style output with brand voice controls and a production-focused UX.</p>
+        <p class="project-desc">AI-powered brand tweet generator built with React, Groq API, and LLaMA 3.3 70B. Turns a short brand brief into polished tweet sets with multiple tone modes and a production-focused UX.</p>
         <div class="project-tags">
           <span class="tag">React 18</span><span class="tag">Vite</span><span class="tag">Groq API</span><span class="tag">LLaMA 3.3 70B</span><span class="tag">Vercel</span>
         </div>
@@ -1184,12 +1253,12 @@
       <!-- PROJECT 2 -->
       <div class="project-card fade-up" data-project-id="analytics">
         <div class="project-image-wrapper">
-          <img src="images/projects/dashboard.png" alt="Real-Time Sales Analytics Dashboard" onerror="this.style.display='none'; const ph=this.nextElementSibling; if (ph) ph.style.display='flex';">
+          <img src="images/projects/dashboard.png" alt="Road Accident Analysis Dashboard" onerror="this.style.display='none'; const ph=this.nextElementSibling; if (ph) ph.style.display='flex';">
           <div class="project-image-placeholder" aria-hidden="true">📊</div>
         </div>
-        <div class="project-num">02 / PROJECT</div>
-        <h3 class="project-title">Real-Time Sales Analytics Dashboard</h3>
-        <p class="project-desc">Interactive BI dashboard on Microsoft Azure + Power BI for trend analysis across location, timeline, and severity. Uses DAX-based computed metrics for decision-ready reporting.</p>
+        <div class="project-num">03 / PROJECT</div>
+        <h3 class="project-title">Road Accident Analysis Dashboard</h3>
+        <p class="project-desc">Interactive BI dashboard on Microsoft Azure + Power BI for trend analysis across region, time, and severity. Uses DAX-based computed metrics to turn raw data into decision-ready reporting.</p>
         <div class="project-tags">
           <span class="tag">Azure</span><span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">DAX</span>
         </div>
@@ -1204,9 +1273,9 @@
           <img src="images/projects/portfolio.png" alt="Portfolio Website" onerror="this.style.display='none'; const ph=this.nextElementSibling; if (ph) ph.style.display='flex';">
           <div class="project-image-placeholder" aria-hidden="true">💼</div>
         </div>
-        <div class="project-num">03 / PROJECT</div>
+        <div class="project-num">04 / PROJECT</div>
         <h3 class="project-title">Portfolio Website</h3>
-        <p class="project-desc">Terminal-inspired portfolio platform with a modular HTML/CSS/JS frontend and Django REST backend integration for contact and writing workflows.</p>
+        <p class="project-desc">Terminal-inspired portfolio platform with a modular HTML/CSS/JS frontend and Django REST backend integration for contact and content workflows.</p>
         <div class="project-tags">
           <span class="tag">HTML/CSS/JS</span><span class="tag">Django</span><span class="tag">REST API</span><span class="tag">Python</span>
         </div>
@@ -1612,11 +1681,19 @@
     </div>
     <div class="blog-grid">
 
+      <div class="blog-card fade-up pmec-card" data-article-id="pmecx" role="button" tabindex="0">
+        <div class="blog-coming-soon">IN REVIEW</div>
+        <div class="blog-meta"><span class="blog-tag-label">Cloud / Research</span><span>Apr 2026 · Manuscript Ready</span></div>
+        <h3 class="blog-title">Task Consolidation Algorithm for Heterogeneous Cloud Computing (PMEC-X)</h3>
+        <p class="blog-excerpt">Unpublished conference manuscript under review. Team: Varun V, Valmeeki Singh, Santhosh G, Abdul Wahab. Mentor: Ms. Devika P.</p>
+        <a href="#" class="blog-read-more" onclick="openArticleModal('pmecx', event)">→ Read project write-up</a>
+      </div>
+
       <div class="blog-card fade-up" data-article-id="alumni" role="button" tabindex="0">
         <div class="blog-coming-soon">LIVE</div>
         <div class="blog-meta"><span class="blog-tag-label">Cloud</span><span>Feb 2025</span></div>
         <h3 class="blog-title">Alumni Horizons: Reconnecting the Past and Future</h3>
-        <p class="blog-excerpt">Published at ICICC-2025, University of Delhi in collaboration with NIT Patna and University of Valladolid, Spain.</p>
+        <p class="blog-excerpt">Published at ICICC-2025, University of Delhi in collaboration with NIT Patna and University of Valladolid, Spain. Team: Vani V Patel, Marthala Haritha, Abdul Wahab, and Jillella Karthik Reddy.</p>
         <a href="#" class="blog-read-more" onclick="openArticleModal('alumni', event)">→ Read publication details</a>
       </div>
 
@@ -1674,6 +1751,20 @@
         <a href="tel:7204635604"                    class="contact-item"><div class="contact-item-icon">📞</div>+91 7204635604</a>
         <a href="https://www.linkedin.com/in/valmeeki-singh-99469b24b/"  class="contact-item" target="_blank"><div class="contact-item-icon">in</div>linkedin.com/in/valmeeki-singh-99469b24b</a>
         <a href="https://github.com/Brijuval"       class="contact-item" target="_blank"><div class="contact-item-icon">⌥</div>github.com/Brijuval</a>
+
+        <div class="feedback-panel">
+          <div class="feedback-title">quick_feedback()</div>
+          <p class="feedback-text">Seen my portfolio? Share what looks good and what should be improved.</p>
+          <div class="feedback-options">
+            <button type="button" class="feedback-chip active" data-feedback-type="general" onclick="setFeedbackType('general', this)">general</button>
+            <button type="button" class="feedback-chip" data-feedback-type="good" onclick="setFeedbackType('good', this)">good</button>
+            <button type="button" class="feedback-chip" data-feedback-type="improve" onclick="setFeedbackType('improve', this)">needs improvement</button>
+            <button type="button" class="feedback-chip" data-feedback-type="bug" onclick="setFeedbackType('bug', this)">found bug</button>
+          </div>
+          <textarea class="form-textarea feedback-note" id="feedbackNote" placeholder="Tell me what to change, remove, or improve..."></textarea>
+          <button class="form-submit feedback-submit" id="feedbackSubmitBtn" onclick="submitQuickFeedback()">./submit_feedback.sh</button>
+          <div id="quickFeedbackMsg" class="form-status" role="status" aria-live="polite" hidden></div>
+        </div>
       </div>
       <div class="fade-up">
         <div class="terminal-window">
@@ -1688,7 +1779,7 @@
               <div class="form-group"><label class="form-label">subject</label><input type="text" class="form-input" placeholder="reason_for_contact" id="fsubject"/></div>
               <div class="form-group"><label class="form-label">message</label><textarea class="form-textarea" placeholder="your message here..." id="fmessage"></textarea></div>
               <button class="form-submit" id="contactSubmitBtn" onclick="handleSubmit()">./send_message.sh</button>
-              <div id="formMsg" role="status" aria-live="polite" style="font-size:0.75rem;color:var(--muted);display:none;"></div>
+              <div id="formMsg" class="form-status" role="status" aria-live="polite" hidden></div>
             </div>
           </div>
         </div>
@@ -1827,6 +1918,26 @@
 
     /* ── PROJECT CARD MODAL ── */
     const projectDetails = {
+      pmecx: {
+        kicker: 'Conference Paper (In Submission)',
+        title: 'Task Consolidation Algorithm for Heterogeneous Cloud Computing',
+        desc: 'PMEC-X is a predictive cloud task scheduler for heterogeneous VMs that optimizes energy, SLA compliance, and utilization using multifactor scoring and consolidation logic. The conference manuscript is complete and currently under review.',
+        speciality: [
+          'EWMA + CUSUM hybrid load prediction for regime shift detection',
+          '7-factor scoring model including carbon and thermal awareness',
+          'SLA-tier-aware consolidation to protect critical workloads'
+        ],
+        built: [
+          'Python simulation engine with PMEC-X and baseline schedulers',
+          'Streamlit dashboard for live metrics, charts, and spike testing',
+          'Conference manuscript package (abstract, results, and methodology) prepared for publication'
+        ],
+        links: [
+          { label: 'GitHub', href: 'https://github.com/varun222004/PMECx' },
+          { label: 'Conference Manuscript', href: '#' },
+          { label: 'Live Demo', href: '#' }
+        ]
+      },
       tweetforge: {
         kicker: 'AI Product',
         title: 'TweetForge AI',
@@ -1933,6 +2044,51 @@
 
     /* ── WRITING ARTICLE MODAL ── */
     const articleDetails = {
+      pmecx: {
+        kicker: 'Cloud / Research',
+        title: 'Task Consolidation Algorithm for Heterogeneous Cloud Computing (PMEC-X)',
+        meta: 'Apr 2026 | Architecture + Results | Manuscript in Submission',
+        body: `
+          <p><strong>PMEC-X (Predictive Multifactor Energy Consolidation)</strong> is a cloud scheduling project focused on one practical challenge: reducing data center energy consumption without violating task deadlines.</p>
+
+          <h4>Publication Status</h4>
+          <p>The conference manuscript for PMEC-X is complete and currently under submission. Full publication details and DOI will be added here once the paper is officially accepted/published.</p>
+
+          <h4>Team and Mentorship</h4>
+          <p><strong>Authors:</strong> Varun V, Valmeeki Singh, Santhosh G, and Abdul Wahab.</p>
+          <p><strong>Mentor:</strong> Ms. Devika P (Dept. of Computer Science, Alliance University).</p>
+
+          <h4>Problem Statement</h4>
+          <p>Traditional schedulers such as Round Robin and FCFS keep too many VMs active for too long. This leads to high idle power draw and poor energy efficiency. PMEC-X addresses this by combining prediction, scoring, and consolidation in one loop.</p>
+
+          <h4>System Approach</h4>
+          <ul>
+            <li><strong>Prediction layer:</strong> <span class="article-keyword">EWMA + CUSUM</span> estimates near-future load and detects sudden regime shifts.</li>
+            <li><strong>Scoring layer:</strong> every task-VM pair is evaluated through a <span class="article-keyword">7-factor weighted model</span> (speed, headroom, cost, energy, carbon, thermal, urgency).</li>
+            <li><strong>Consolidation layer:</strong> underloaded VMs are migrated/queued based on <span class="article-keyword">SLA tier safety</span>, then shutdown when empty.</li>
+          </ul>
+
+          <h4>High-Level Pseudocode</h4>
+          <ul>
+            <li>Collect ready tasks and VM state each epoch.</li>
+            <li>Predict VM load using EWMA, trigger CUSUM alarms on spikes.</li>
+            <li>Sort tasks by urgency and dependency readiness.</li>
+            <li>Score all feasible VM options per task with weighted factors.</li>
+            <li>Assign best VM, update load, queue overflow tasks safely.</li>
+            <li>Consolidate low-load VMs and shutdown empty nodes.</li>
+          </ul>
+
+          <h4>Measured Outcomes</h4>
+          <ul>
+            <li><strong>40.4% energy reduction</strong> vs Round Robin.</li>
+            <li><strong>14.8% energy reduction</strong> vs MinMin.</li>
+            <li><strong>0% SLA violations</strong> in the final benchmark setup.</li>
+            <li>Live dashboard support for explainable demo and review presentation.</li>
+          </ul>
+
+          <p>This project strengthened my understanding of cloud scheduling design, systems thinking, and explainable engineering for academic and product audiences.</p>
+        `
+      },
       alumni: {
         kicker: 'Research Publication',
         title: 'Alumni Horizons: Reconnecting the Past and Future',
@@ -2100,10 +2256,10 @@
       const submitBtn = document.getElementById('contactSubmitBtn');
       const originalBtnText = submitBtn.textContent;
       const payload = {
-        name:    document.getElementById('fname').value,
-        email:   document.getElementById('femail').value,
-        subject: document.getElementById('fsubject').value,
-        message: document.getElementById('fmessage').value,
+        name:    document.getElementById('fname').value.trim(),
+        email:   document.getElementById('femail').value.trim(),
+        subject: document.getElementById('fsubject').value.trim(),
+        message: document.getElementById('fmessage').value.trim(),
       };
       if (!payload.name || !payload.email || !payload.message) {
         showFormMessage('Please fill in name, email and message.', 'error', 8000);
@@ -2111,8 +2267,6 @@
       }
 
       submitBtn.disabled = true;
-      submitBtn.style.opacity = '0.7';
-      submitBtn.style.cursor = 'not-allowed';
       submitBtn.textContent = './sending...';
       showFormMessage('Sending your message...', 'info');
 
@@ -2140,37 +2294,25 @@
         showFormMessage('Could not reach server. Please email me directly.', 'error', 8000);
       } finally {
         submitBtn.disabled = false;
-        submitBtn.style.opacity = '';
-        submitBtn.style.cursor = '';
         submitBtn.textContent = originalBtnText;
       }
     }
 
     function showFormMessage(message, type = 'info', autoHideMs = 0) {
       const msgEl = document.getElementById('formMsg');
-      const colorMap = {
-        info: 'var(--cyan)',
-        success: 'var(--green)',
-        error: 'var(--amber)',
-      };
-      const iconMap = {
-        info: '⌛',
-        success: '✓',
-        error: '⚠',
-      };
 
       if (formMessageTimer) {
         clearTimeout(formMessageTimer);
         formMessageTimer = null;
       }
 
-      msgEl.textContent = `${iconMap[type] || iconMap.info} ${message}`;
-      msgEl.style.display = 'block';
-      msgEl.style.color = colorMap[type] || colorMap.info;
+      msgEl.textContent = `${type === 'success' ? '✓' : type === 'error' ? '⚠' : '⌛'} ${message}`;
+      msgEl.hidden = false;
+      msgEl.className = `form-status ${type === 'success' ? 'is-success' : type === 'error' ? 'is-error' : ''}`;
 
       if (autoHideMs > 0) {
         formMessageTimer = setTimeout(() => {
-          msgEl.style.display = 'none';
+          msgEl.hidden = true;
           formMessageTimer = null;
         }, autoHideMs);
       }
@@ -2182,6 +2324,71 @@
       document.getElementById('femail').value   = '';
       document.getElementById('fsubject').value = '';
       document.getElementById('fmessage').value = '';
+    }
+
+    /* ── QUICK FEEDBACK WIDGET ── */
+    let selectedFeedbackType = 'general';
+
+    function setFeedbackType(type, buttonEl) {
+      selectedFeedbackType = type;
+      document.querySelectorAll('.feedback-chip').forEach(chip => chip.classList.remove('active'));
+      if (buttonEl) buttonEl.classList.add('active');
+    }
+
+    function showQuickFeedbackMessage(message, type = 'info', autoHideMs = 0) {
+      const msgEl = document.getElementById('quickFeedbackMsg');
+      msgEl.textContent = `${type === 'success' ? '✓' : type === 'error' ? '⚠' : '⌛'} ${message}`;
+      msgEl.hidden = false;
+      msgEl.className = `form-status ${type === 'success' ? 'is-success' : type === 'error' ? 'is-error' : ''}`;
+
+      if (autoHideMs > 0) {
+        setTimeout(() => {
+          msgEl.hidden = true;
+        }, autoHideMs);
+      }
+    }
+
+    async function submitQuickFeedback() {
+      const submitBtn = document.getElementById('feedbackSubmitBtn');
+      const note = document.getElementById('feedbackNote').value.trim();
+      const originalBtnText = submitBtn.textContent;
+
+      if (!note) {
+        showQuickFeedbackMessage('Please add at least one suggestion so I can improve.', 'error', 6000);
+        return;
+      }
+
+      const payload = {
+        name: 'Portfolio Visitor',
+        email: 'visitor-feedback@portfolio.local',
+        subject: `Portfolio Feedback: ${selectedFeedbackType}`,
+        message: `Feedback type: ${selectedFeedbackType}\n\n${note}`,
+      };
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = './sending_feedback...';
+      showQuickFeedbackMessage('Sending feedback...', 'info');
+
+      try {
+        const res = await fetch('https://portfolio-backend-688t.onrender.com/api/contact/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        if (res.ok) {
+          document.getElementById('feedbackNote').value = '';
+          showQuickFeedbackMessage('Thanks! Your feedback was sent.', 'success', 5000);
+          return;
+        }
+
+        showQuickFeedbackMessage('Could not submit feedback right now. Please try again.', 'error', 7000);
+      } catch (e) {
+        showQuickFeedbackMessage('Network issue. Please try again later.', 'error', 7000);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      }
     }
 
 
