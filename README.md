@@ -2,6 +2,10 @@
 
 Single-page portfolio site for Valmeeki Singh. The frontend is a static portfolio page built from `index.html` plus supporting CSS, JavaScript, images, and a Django backend for the contact form.
 
+## Live Demo
+
+https://valmeeki.netlify.app/
+
 ## Repository Layout
 
 - `index.html` - the full portfolio page, including all sections, styles, and scripts
