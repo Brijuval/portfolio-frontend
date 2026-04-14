@@ -7,6 +7,15 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
+from .models import VisitEvent
+
+
+def _extract_client_ip(request):
+	x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR', '')
+	if x_forwarded_for:
+		return x_forwarded_for.split(',')[0].strip()
+	return request.META.get('REMOTE_ADDR')
+
 
 @csrf_exempt
 @require_POST
@@ -51,3 +60,29 @@ def contact_submit(request):
 		return JsonResponse({'error': 'Unable to send message right now. Please try again later.'}, status=500)
 
 	return JsonResponse({'message': 'Message sent successfully.'}, status=200)
+
+
+@csrf_exempt
+@require_POST
+def track_visit(request):
+	try:
+		payload = json.loads(request.body.decode('utf-8'))
+	except json.JSONDecodeError:
+		return JsonResponse({'error': 'Invalid JSON payload.'}, status=400)
+
+	page_path = str(payload.get('pagePath', '/')).strip() or '/'
+	if len(page_path) > 255:
+		page_path = page_path[:255]
+
+	referrer = str(payload.get('referrer', '')).strip()
+	user_agent = request.META.get('HTTP_USER_AGENT', '')
+	ip_address = _extract_client_ip(request)
+
+	VisitEvent.objects.create(
+		page_path=page_path,
+		referrer=referrer[:500],
+		user_agent=user_agent[:500],
+		ip_address=ip_address,
+	)
+
+	return JsonResponse({'message': 'Visit tracked.'}, status=201)

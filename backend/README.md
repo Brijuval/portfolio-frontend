@@ -45,7 +45,8 @@ ALLOWED_HOSTS=127.0.0.1,localhost
 CORS_ALLOWED_ORIGINS=http://127.0.0.1:5500,http://localhost:5500,https://valmeeki.netlify.app,https://celadon-cajeta-d8bbc9.netlify.app
 CSRF_TRUSTED_ORIGINS=http://127.0.0.1:5500,http://localhost:5500,https://valmeeki.netlify.app,https://celadon-cajeta-d8bbc9.netlify.app
 
-EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
+# Local dev: use console backend so messages print in the terminal.
+EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
 EMAIL_HOST=smtp.gmail.com
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
@@ -103,6 +104,8 @@ Common error responses:
 - `400` invalid email format
 - `500` receiver email not configured
 - `500` mail send failure
+
+For local development, the console email backend prints the message to the terminal instead of sending a real email. For production, switch `EMAIL_BACKEND` back to SMTP and set real mail credentials.
 
 ## Frontend Integration
 

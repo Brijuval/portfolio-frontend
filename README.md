@@ -93,6 +93,34 @@ The API defaults to `http://127.0.0.1:8000`.
 - Backend must expose the `/api/contact/` route and allow your frontend domain through CORS and CSRF settings
 - If the contact form stops working after deployment, check the backend environment variables first
 
+## Visitor Tracking (Who Visited)
+
+This project now tracks page visits using the backend endpoint:
+
+- `POST /api/contact/track-visit/`
+
+What gets stored:
+
+- page path
+- referrer
+- browser user-agent
+- IP address
+- timestamp
+
+How to view visits:
+
+1. Create an admin user in `portfolio-frontend/backend`:
+	```powershell
+	python manage.py createsuperuser
+	```
+2. Run server:
+	```powershell
+	python manage.py runserver
+	```
+3. Open `/admin/` and view `Visit Events` under the Contact app.
+
+Important: you can identify visit patterns (counts, sources, devices, rough location by IP), but you cannot reliably know the exact real-world identity of every visitor unless they authenticate or submit a form.
+
 ## Notes
 
 - This README matches the current repository layout.
