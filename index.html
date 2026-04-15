@@ -689,30 +689,30 @@
   height: 220px;
 }
 
-/* Spinning green dashed ring */
+/* Glow frame tuned to the portfolio color palette */
 .about-photo-ring::before {
   content: '';
   position: absolute;
-  inset: -6px;
+  inset: -18px;
   border-radius: 50%;
-  border: 2px dashed var(--green);
-  animation: spinRing var(--motion-spin-duration) linear infinite;
-  animation-play-state: var(--motion-loop-play-state);
-  opacity: 0.6;
+  background:
+    radial-gradient(circle, rgba(0, 255, 136, 0.42) 0%, rgba(0, 255, 136, 0.2) 34%, rgba(0, 212, 255, 0.12) 52%, transparent 72%);
+  filter: blur(16px);
+  opacity: 0.95;
+  pointer-events: none;
 }
 
-/* Static green solid ring */
 .about-photo-ring::after {
   content: '';
   position: absolute;
-  inset: -3px;
+  inset: -4px;
   border-radius: 50%;
-  border: 1px solid rgba(0,255,136,0.2);
-}
-
-@keyframes spinRing {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  border: 1px solid rgba(0, 255, 136, 0.72);
+  box-shadow:
+    0 0 0 1px rgba(0, 255, 136, 0.18) inset,
+    0 0 18px rgba(0, 255, 136, 0.34),
+    0 0 42px rgba(0, 212, 255, 0.14);
+  pointer-events: none;
 }
 
 /* The actual photo */
@@ -723,13 +723,20 @@
   object-fit: cover;
   object-position: center top;
   display: block;
-  border: 3px solid var(--bg3);
-  filter: grayscale(20%);
-  transition: filter 0.3s ease;
+  border: 1px solid rgba(0, 255, 136, 0.32);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.03) inset,
+    0 0 24px rgba(0, 255, 136, 0.16);
+  filter: grayscale(15%);
+  transition: filter 0.3s ease, box-shadow 0.3s ease;
 }
 
 .about-photo:hover {
   filter: grayscale(0%);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.05) inset,
+    0 0 28px rgba(0, 255, 136, 0.22),
+    0 0 52px rgba(0, 212, 255, 0.12);
 }
 
 /* Name tag below photo */
