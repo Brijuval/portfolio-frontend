@@ -133,13 +133,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = config(
     'CORS_ALLOWED_ORIGINS',
-    default='http://127.0.0.1:5500,http://localhost:5500,https://valmeeki.netlify.app,https://celadon-cajeta-d8bbc9.netlify.app',
+    default='http://127.0.0.1:5500,http://localhost:5500,https://valmeeki.netlify.app,https://www.valmeeki.netlify.app,https://celadon-cajeta-d8bbc9.netlify.app',
     cast=Csv(),
 )
 
+# Allow Netlify preview/alias domains without changing CORS config on every deploy URL change.
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r'^https://[a-z0-9-]+\.netlify\.app$',
+]
+
 CSRF_TRUSTED_ORIGINS = config(
     'CSRF_TRUSTED_ORIGINS',
-    default='http://127.0.0.1:5500,http://localhost:5500,https://valmeeki.netlify.app,https://celadon-cajeta-d8bbc9.netlify.app',
+    default='http://127.0.0.1:5500,http://localhost:5500,https://valmeeki.netlify.app,https://www.valmeeki.netlify.app,https://celadon-cajeta-d8bbc9.netlify.app,https://*.netlify.app',
     cast=Csv(),
 )
 
